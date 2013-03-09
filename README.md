@@ -7,6 +7,19 @@ Tasks:
 - Backend: Tien + Biyan
 - Front end: Hung + Carmen
 
+Functionality:
+- Customer:
++ Register
++ Make booking
++ Cancel booking
++ Search hotel & room by some parameters: location, comfort level, etc.
++ Browse through the hotels, see the features of the hotels, etc.
+
+- Admins:
++ Create new hotels, new rooms
++ Add features to hotels & stuff
++ Review the bookings
+
 By 16:
 - Van: having mockup of welcome, login, etc.
 - Tien & Biyan: setup code igniter, setup database.
