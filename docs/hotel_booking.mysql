@@ -1,0 +1,150 @@
+-- MySQL dump 10.13  Distrib 5.5.20, for osx10.7 (i386)
+--
+-- Host: localhost    Database: hotelbooking
+-- ------------------------------------------------------
+-- Server version	5.5.20
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `bookings`
+--
+
+DROP TABLE IF EXISTS `bookings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `customer` varchar(128) DEFAULT NULL,
+  `num_child` int(11) DEFAULT NULL,
+  `num_adult` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `features`
+--
+
+DROP TABLE IF EXISTS `features`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `features` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) DEFAULT NULL,
+  `description` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hotel_feature`
+--
+
+DROP TABLE IF EXISTS `hotel_feature`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hotel_feature` (
+  `hotel_code` varchar(20) NOT NULL DEFAULT '',
+  `feature_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`hotel_code`,`feature_id`),
+  KEY `feature_id` (`feature_id`),
+  CONSTRAINT `hotel_feature_ibfk_1` FOREIGN KEY (`hotel_code`) REFERENCES `hotels` (`hotel_code`),
+  CONSTRAINT `hotel_feature_ibfk_2` FOREIGN KEY (`feature_id`) REFERENCES `features` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hotels`
+--
+
+DROP TABLE IF EXISTS `hotels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hotels` (
+  `name` varchar(256) DEFAULT NULL,
+  `location` varchar(256) DEFAULT NULL,
+  `hotel_code` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`hotel_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `room_booking`
+--
+
+DROP TABLE IF EXISTS `room_booking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `room_booking` (
+  `room_code` varchar(20) NOT NULL DEFAULT '',
+  `hotel_code` varchar(20) NOT NULL DEFAULT '',
+  `booking_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`room_code`,`hotel_code`,`booking_id`),
+  KEY `booking_id` (`booking_id`),
+  CONSTRAINT `room_booking_ibfk_1` FOREIGN KEY (`room_code`, `hotel_code`) REFERENCES `rooms` (`room_code`, `hotel_code`),
+  CONSTRAINT `room_booking_ibfk_2` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `rooms`
+--
+
+DROP TABLE IF EXISTS `rooms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rooms` (
+  `room_code` varchar(20) NOT NULL DEFAULT '',
+  `num_bed` int(11) DEFAULT NULL,
+  `comfort_level` varchar(256) DEFAULT NULL,
+  `hotel_code` varchar(20) NOT NULL DEFAULT '',
+  `max_capacity` int(11) DEFAULT NULL,
+  PRIMARY KEY (`room_code`,`hotel_code`),
+  KEY `hotel_code` (`hotel_code`),
+  CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`hotel_code`) REFERENCES `hotels` (`hotel_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `name` varchar(256) DEFAULT NULL,
+  `address` varchar(256) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `password` varchar(256) DEFAULT NULL,
+  `email` varchar(128) NOT NULL DEFAULT '',
+  `card_number` varchar(256) DEFAULT NULL,
+  `passport` varchar(256) DEFAULT NULL,
+  `phone_no` varchar(256) DEFAULT NULL,
+  `user_type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-03-09 12:29:10
