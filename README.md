@@ -1,3 +1,37 @@
+
+16 March
+
+- Tien & Biyan: writing models
+- Hung & Carmen: controllers & views
+- Van: wireframe
+
+Tien:
+- How to use SQL query instead of ActiveRecord
+
+Biyan:
+- Having model for users up ASAP
+
+Hung & Carmen:
+- Create controllers & views for other stuff. Using fake data
+to render pages.
+- User should be able to register, login bythe end of the week
+
+* Login pages
+* View list of hotels
+* View list of rooms in a hotel
+* View detail about a room / a hotel
+* Search view for hotel
+* View list of bookings
+
+[User, Hotel, Room, Booking] ==> CRUD (Create - view to create the item, Read - View a list, View single item, Update)
+
+Goal:
+- By 1 April, done the project
+- 1 week for the report
+
+
+===========================================================
+
 - Tien: Setup CodeIgniter
 - Using bootstrap for UI
 - Hung: setup the database schema in SQL
