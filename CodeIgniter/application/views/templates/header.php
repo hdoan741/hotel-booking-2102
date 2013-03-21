@@ -4,3 +4,4 @@
 </head>
 <body>
 	<h1>CodeIgniter</h1>
+	<p>First user in Users table: <?php echo $user ?></p>
