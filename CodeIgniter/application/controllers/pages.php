@@ -10,10 +10,11 @@ class Pages extends CI_Controller {
 		}
 	
 		$this->load->database();
-		$this->load->model('User');
+		$this->load->model('Usermanager');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
-		$data['user'] = $this->User->get_first_entry();
+		$data['user'] = 'aa';
+		//echo $this->Usermanager->get_user(1)->name;
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/'.$page, $data);
