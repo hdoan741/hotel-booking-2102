@@ -13,7 +13,7 @@ class Pages extends CI_Controller {
 		$this->load->model('User');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
-		$data['user'] = $this->User->get_first_entry();
+		$data['user'] = 'Anon User'; // $this->User->get_first_entry();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/'.$page, $data);
