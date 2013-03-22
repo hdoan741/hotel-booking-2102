@@ -20,7 +20,7 @@ Class User extends CI_Model {
 		$sql = "SELECT name FROM users LIMIT 1";
 		$query = $this->db->query($sql);
 		$row = $query->row_array();
-		return $row['name'];
+		return $row['name'] || '';
 	}
 }
 
