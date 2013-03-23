@@ -9,23 +9,20 @@ Class User extends CI_Model {
 	var $card_number = '';
 	var $passport = '';
 	var $phone_no = '';
-	var user_type = NULL;	
-
-	function __construct() {
-		parent::__construct();
-	}
+	var $user_type = NULL;	
 
 	function __construct($attr) {
 		parent::__construct();
-		$name = $attr['name'];
-		$address = $attr['address'];
-		$user_id = $attr['user_id'];
-		$password = $attr['password'];
-		$email = $attr['email'];
-		$card_number = $attr['card_number'];
-		$passport = $attr['passport'];
-		$phone_no = $attr['phone_no'];
-		$user_type = $attr['user_type'];
+		if($attr == NULL) return;
+		$this->name = $attr['name'];
+		$this->address = $attr['address'];
+		$this->user_id = $attr['user_id'];
+		$this->password = $attr['password'];
+		$this->email = $attr['email'];
+		$this->card_number = $attr['card_number'];
+		$this->passport = $attr['passport'];
+		$this->phone_no = $attr['phone_no'];
+		$this->user_type = $attr['user_type'];
 	}
 
 	function save() {
