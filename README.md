@@ -1,3 +1,31 @@
+23 March
+
+Todo:
+- Hung: proper view for user login. User model if needed.
+
+- Tien: dummy view/controller to manipulate hotel. Room model & Room dummy controller.
+
+- Biyan: dummny view/controller and model for hotel booking.
+
+Tien & Biyan: For the controller: need to be able to list existing records (using a simple table),
+view 1 individual record, create a new record, delete a record, update record.
+
+- Carmen & Hung: proper view for the website.
+
+- Van: continue working on the design
+
+Done:
+- Agree on how model work. There is an entity class and a manager class (Hotel vs HotelManager).
+The manager provide ultility functions to work with the entity. The entity contains attributes, 
+knows how to save/ update/ delete itself from the database
+
+- Hotel model
+
+- User system & dummy view to create user/login/logout etc.
+
+- Initial work on the welcome screen
+
+=========================================================
 
 16 March
 
@@ -28,7 +56,6 @@ to render pages.
 Goal:
 - By 1 April, done the project
 - 1 week for the report
-
 
 ===========================================================
 
