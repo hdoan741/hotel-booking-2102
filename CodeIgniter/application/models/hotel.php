@@ -45,4 +45,12 @@ class Hotel extends CI_Model{
 			$this->_insert();
 		}
 	}
+
+	function delete() {
+		if ($this->_inInTable()) {
+			$format = 'DELETE FROM hotels WHERE hotel_code=\'%s\'';
+			$sql = sprintf($format, $this->hotel_code);
+			$this->db->query($sql);
+		}
+	}
 }
