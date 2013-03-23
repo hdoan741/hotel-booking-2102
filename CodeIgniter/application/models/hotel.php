@@ -5,6 +5,7 @@ class Hotel extends CI_Model{
 	var $location = '';
 
 	function __construct() {
+		parent::__construct();
 	}
 
 	function _insert() {
