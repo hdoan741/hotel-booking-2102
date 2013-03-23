@@ -8,7 +8,7 @@ class Pages extends CI_Controller {
 			// Whoops, we don't have a page for that!
 			show_404();
 		}
-	
+
 		$this->load->database();
 		$this->load->model('User');
 
