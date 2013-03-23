@@ -6,9 +6,9 @@ Class User extends CI_Model {
 	var $id = NULL;
 	var $password = '';
 	var $email = '';
-	var $card_number = '';
+	var $card_no = '';
 	var $passport = '';
-	var $phone_no = '';
+	var $phone = '';
 	var $user_type = NULL;	
 
 	function __construct($attr) {
@@ -19,23 +19,23 @@ Class User extends CI_Model {
 		$this->id = $attr['id'];
 		$this->password = $attr['password'];
 		$this->email = $attr['email'];
-		$this->card_number = $attr['card_number'];
+		$this->card_number = $attr['card_no'];
 		$this->passport = $attr['passport'];
-		$this->phone_no = $attr['phone_no'];
+		$this->phone_no = $attr['phone'];
 		$this->user_type = $attr['user_type'];
 	}
 
 	function save() {
-		if($user_id == NULL) {
+		if($id == NULL) {
 			$sql = 'INSERT INTO users VALUES ('
 				. $name  . ', '
 				. $address . ', '
-				. $user_id . ', '
+				. $id . ', '
 				. $password . ', '
 				. $email . ', '
-				. $card_number . ', '
+				. $card_no . ', '
 				. $passport . ', '
-				. $phone_no . ', '
+				. $phone . ', '
 				. $user_type . ')';
 		} else {
 			$sql = 'UPDATE users SET '
@@ -43,11 +43,11 @@ Class User extends CI_Model {
 				. 'address=' . $address . ', '
 				. 'password=' . $password . ', '
 				. 'email=' . $email . ', '
-				. 'card_number=' . $card_number . ', '
+				. 'card_no=' . $card_number . ', '
 				. 'passport=' . $passpost . ', '
-				. 'phone_no' . $phone_no . ', '
+				. 'phone' . $phone_no . ', '
 				. 'user_type' . $user_type . ' '
-				. 'WHERE user_id=' . $user_id;
+				. 'WHERE id=' . $id;
 		}
 		$this->db->query($sql);
 	}
