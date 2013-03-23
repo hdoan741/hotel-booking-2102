@@ -4,8 +4,20 @@ class Hotel extends CI_Model{
 	var $name = '';
 	var $location = '';
 
-	function __construct() {
+	function __construct($data=NULL) {
 		parent::__construct();
+
+		if ($data != NULL) {
+			if (is_array($data)) {
+				$this->hotel_code = $data['hotel_code'];
+				$this->name = $data['name'];
+				$this->location = $data['location'];
+			} else {	
+				$this->hotel_code = $data->hotel_code;
+				$this->name = $data->name;
+				$this->location = $data->location;
+			}
+		}
 	}
 
 	function _insert() {
