@@ -82,7 +82,7 @@ echo '<pre>';
 
     echo '<br />   Connected OK:'  ;
     die( 'file: ' .__FILE__ . '--> Line: ' .__LINE__); 
-*/
 
+*/
 /* End of file database.php */
 /* Location: ./application/config/database.php */

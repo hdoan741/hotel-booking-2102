@@ -6,8 +6,8 @@ class Usermanager extends CI_Model {
 		parent::__construct();
 	}
 
-	function get_user($user_id) {
-		$sql = 'SELECT * FROM users WHERE user_id=' . $user_id;
+	function get_user($id) {
+		$sql = 'SELECT * FROM users WHERE id=' . $id;
 		$query = $this->db->query($sql);
 		$row = $query->row_array();
 		include APPPATH . 'models/user.php';

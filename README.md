@@ -5,7 +5,7 @@ Todo:
 
 - Tien: dummy view/controller to manipulate hotel. Room model & Room dummy controller.
 
-- Biyan: dummny view/controller and model for hotel booking.
+- Biyan: dummny view/controller and model for hotel booking. Database migration. From CodeIgniter Folder, run "php index.php migrate"
 
 Tien & Biyan: For the controller: need to be able to list existing records (using a simple table),
 view 1 individual record, create a new record, delete a record, update record.

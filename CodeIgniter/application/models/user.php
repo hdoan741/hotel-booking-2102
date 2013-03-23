@@ -3,7 +3,7 @@
 Class User extends CI_Model {
 	var $name = '';
 	var $address = '';
-	var $user_id = NULL;
+	var $id = NULL;
 	var $password = '';
 	var $email = '';
 	var $card_number = '';
@@ -16,7 +16,7 @@ Class User extends CI_Model {
 		if($attr == NULL) return;
 		$this->name = $attr['name'];
 		$this->address = $attr['address'];
-		$this->user_id = $attr['user_id'];
+		$this->id = $attr['id'];
 		$this->password = $attr['password'];
 		$this->email = $attr['email'];
 		$this->card_number = $attr['card_number'];
