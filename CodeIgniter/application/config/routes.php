@@ -39,6 +39,11 @@
 */
 
 $route['default_controller'] = "pages/view";
+$route['auth'] = "auth";
+$route['auth/login'] = "auth/login";
+$route['auth/logout'] = "auth/logout";
+$route['auth/create_user'] = "auth/create_user";
+$route['migrate'] = "migrate";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 
