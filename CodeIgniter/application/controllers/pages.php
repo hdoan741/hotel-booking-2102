@@ -13,10 +13,11 @@ class Pages extends CI_Controller {
 		$this->load->model('Usermanager');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
-		$data['user'] = $this->Usermanager->get_user(1)->first_name;
+    $current_user = $this->ion_auth->user()->row();
+    $data['current_user'] = $current_user;
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('pages/'.$page, $data);
-		$this->load->view('templates/footer', $data);
+    $this->load->view('templates/header', $data);
+    $this->load->view('pages/'.$page, $data);
+    $this->load->view('templates/footer', $data);
 	}
 }
