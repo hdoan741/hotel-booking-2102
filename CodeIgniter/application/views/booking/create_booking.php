@@ -31,6 +31,18 @@ Adult No:<?php echo form_input($num_adult); ?>
 </p>
 
 <p>
+Room Type: <?php echo form_dropdown('room_type', $room_type_options, 'double'); ?>
+</p>
+
+<p>
+no. of rooms: <?php echo form_dropdown('num_room', $num_room_options, '1'); ?>
+</p>
+
+<!--<p>
+<a>+ More Rooms</a>
+</p>-->
+
+<p>
 <?php echo form_submit($booking_submit); ?>
 </p>
 

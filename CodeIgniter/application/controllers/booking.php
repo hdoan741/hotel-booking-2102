@@ -39,6 +39,18 @@ class Booking extends CI_Controller {
 				'id' => 'num_adult',
 				'type' => 'text',
 			);
+			$this->data['room_type_options'] = array(
+				'double' => 'Double',
+				'twin' => 'Twin',
+				'single' => 'Single',
+			);
+			$this->data['num_room_options'] = array(
+				'1' => 1,
+				'2' => 2,
+				'3' => 3,
+				'4' => 4,
+				'5' => 5,
+			);
 			$this->data['booking_submit'] = array(
 				'name' => 'booking_submit',
 				'id' => 'booking_submit',
