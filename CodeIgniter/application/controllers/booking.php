@@ -63,6 +63,6 @@ class Booking extends CI_Controller {
 	}
 
 	function hotel_list() {
-		echo "Hotel listing";
+		$this->load->view('booking/hotel_list');
 	}
 }	
