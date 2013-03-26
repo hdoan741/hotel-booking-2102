@@ -1,6 +1,6 @@
 <?php
 
-Class User extends CI_Model {
+class User extends CI_Model {
 	var $name = '';
 	var $address = '';
 	var $id = NULL;
@@ -11,7 +11,7 @@ Class User extends CI_Model {
 	var $phone = '';
 	var $user_type = NULL;	
 
-	function __construct($attr) {
+	function __construct($attr=NULL) {
 		parent::__construct();
 		if($attr == NULL) return;
 		$this->name = $attr['name'];
@@ -30,7 +30,6 @@ Class User extends CI_Model {
 			$sql = 'INSERT INTO users VALUES ('
 				. $name  . ', '
 				. $address . ', '
-				. $id . ', '
 				. $password . ', '
 				. $email . ', '
 				. $card_no . ', '
