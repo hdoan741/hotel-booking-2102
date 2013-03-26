@@ -18,7 +18,6 @@ class User extends CI_Model {
 		$this->first_name = $attr['first_name'];
 		$this->last_name = $attr['last_name'];
 		$this->address = $attr['address'];
-		$this->id = $attr['id'];
 		$this->password = $attr['password'];
 		$this->email = $attr['email'];
 		$this->card_number = $attr['card_no'];
@@ -27,31 +26,31 @@ class User extends CI_Model {
 	}
 
 	function save() {
-		if($id == NULL) {
+		if($this->id == NULL) {
 			$sql = 'INSERT INTO users 
 				(first_name, last_name,
 				 address, password,
 				 email, card_no,
-				 phone, user_type) VALUES ('
-				. $first_name  . ', '
-				. $last_name . ', '
-				. $address . ', '
-				. $password . ', '
-				. $email . ', '
-				. $card_no . ', '
-				. $phone . ', '
-				. $user_type . ')';
+				 phone, user_type) VALUES (\''
+				. $this->first_name  . '\', \''
+				. $this->last_name . '\', \''
+				. $this->address . '\', \''
+				. $this->password . '\', \''
+				. $this->email . '\', \''
+				. $this->card_no . '\', \''
+				. $this->phone_no . '\', '
+				. $this->user_type . ')';
 		} else {
 			$sql = 'UPDATE users SET '
-				. 'first_name=' . $first_name . ', '
-				. 'last_name=' . $last_name . ', '
-				. 'address=' . $address . ', '
-				. 'password=' . $password . ', '
-				. 'email=' . $email . ', '
-				. 'card_no=' . $card_number . ', '
-				. 'phone' . $phone_no . ', '
-				. 'user_type' . $user_type . ' '
-				. 'WHERE id=' . $id;
+				. 'first_name=\'' . $this->first_name . '\', '
+				. 'last_name=\'' . $this->last_name . '\', '
+				. 'address=\'' . $this->address . '\', '
+				. 'password=\'' . $this->password . '\', '
+				. 'email=\'' . $this->email . '\', '
+				. 'card_no=\'' . $this->card_number . '\', '
+				. 'phone=\'' . $this->phone_no . '\', '
+				. 'user_type=' . $this->user_type . ' '
+				. 'WHERE id=' . $this->id;
 		}
 		$this->db->query($sql);
 	}

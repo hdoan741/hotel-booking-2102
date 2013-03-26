@@ -6,8 +6,9 @@
 
 <script>
     $(function() {
-        $("#start_date").datepicker();
-	$('#end_date').datepicker();
+        $("#start_date").datepicker({dateFormat:'yy-mm-dd'});
+	$('#end_date').datepicker({dateFormat:'yy-mm-dd'});
+	
     });
 </script>
 
@@ -15,11 +16,23 @@
 <?php echo form_open('booking/create_booking'); ?>
 
 <p>
-Start Date:<?php echo form_input($start_date); ?>
+Location:<?php echo form_input($location); ?>
 </p>
 
 <p>
-End Date:<?php echo form_input($end_date); ?>
+Check-in:<?php echo form_input($start_date); ?>
+</p>
+
+<p>
+Check-out:<?php echo form_input($end_date); ?>
+</p>
+
+<p>
+Room Type: <?php echo form_dropdown('room_type', $room_type_options, 'double'); ?>
+</p>
+
+<p>
+Rooms: <?php echo form_dropdown('num_room', $num_room_options, '1'); ?>
 </p>
 
 <p>
@@ -28,14 +41,6 @@ Child No:<?php echo form_input($num_child); ?>
 
 <p>
 Adult No:<?php echo form_input($num_adult); ?>
-</p>
-
-<p>
-Room Type: <?php echo form_dropdown('room_type', $room_type_options, 'double'); ?>
-</p>
-
-<p>
-no. of rooms: <?php echo form_dropdown('num_room', $num_room_options, '1'); ?>
 </p>
 
 <!--<p>
