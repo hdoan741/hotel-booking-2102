@@ -4,7 +4,7 @@
 <body>
 
 	<h1>Create A New Hotel</h1>
-	<?php echo form_open('hotels_controller/create'); ?>
+	<?php echo form_open('/hotels/create'); ?>
 
 	<p>
 		Hotel Code:<?php echo form_input($hotel_code); ?>

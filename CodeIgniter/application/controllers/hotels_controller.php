@@ -4,6 +4,7 @@ class Hotels_Controller extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('Hotel_manager');
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
@@ -37,10 +38,23 @@ class Hotels_Controller extends CI_Controller {
 			);
 			$this->load->view('hotels/create_hotel', $this->data);
 		} else {
+			$this->_result();
 		}
 	}
 
-	public function result() {
-		echo 'Success but do nothing';
+	public function list_hotels() {
+		echo "List of hotels";
+	}
+
+	public function _result() {
+		$hotel_data = array('hotel_code' => $_POST['hotel_code'],
+							'name' => $_POST['name'],
+							'location' => $_POST['location']);
+
+		include APPPATH .'models/hotel.php';
+		$hotel = new Hotel($hotel_data);
+		$hotel->save();
+
+		$this->load->view('hotels/create_hotel_result', $hotel_data);
 	}
 }
