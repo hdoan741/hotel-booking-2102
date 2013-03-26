@@ -4,6 +4,7 @@ class Hotels_Controller extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('Hotel_manager');
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
@@ -41,8 +42,8 @@ class Hotels_Controller extends CI_Controller {
 		}
 	}
 
-	public function list_hotel() {
-
+	public function list_hotels() {
+		echo "List of hotels";
 	}
 
 	public function _result() {
