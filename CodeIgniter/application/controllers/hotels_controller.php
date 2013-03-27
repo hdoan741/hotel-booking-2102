@@ -22,8 +22,8 @@ class Hotels_Controller extends CI_Controller {
 			);
 			$this->data['name'] = array(
 				'name' => 'name',
-				'id' => 'id',
-				'type' => 'type',
+				'id' => 'name',
+				'type' => 'text',
 			);
 			$this->data['location'] = array(
 				'name' => 'location',
@@ -33,8 +33,10 @@ class Hotels_Controller extends CI_Controller {
 			$this->data['hotel_submit'] = array(
 				'name' => 'hotel_submit',
 				'id' => 'hotel_submit',
+				'class' => 'btn',
 				'value' => 'Submit',
 			);
+			$this->load->view('templates/admin/header.php');
 			$this->load->view('hotels/create_hotel', $this->data);
 		} else {
 			$this->_result();
@@ -42,6 +44,12 @@ class Hotels_Controller extends CI_Controller {
 	}
 
 	public function list_hotel() {
+
+		$this->load->model('Hotel_manager');
+		$this->data['hotels'] = $this->Hotel_manager->get_all_hotels();
+
+		$this->load->view('templates/admin/header.php');
+		$this->load->view('hotels/hotel_list', $this->data);
 
 	}
 
@@ -54,6 +62,7 @@ class Hotels_Controller extends CI_Controller {
 		$hotel = new Hotel($hotel_data);
 		$hotel->save();
 
+		$this->load->view('templates/admin/header.php');
 		$this->load->view('hotels/create_hotel_result', $hotel_data);
 	}
 }
