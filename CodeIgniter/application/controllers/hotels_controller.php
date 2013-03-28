@@ -37,6 +37,10 @@ class Hotels_Controller extends CI_Controller {
 				'class' => 'btn',
 				'value' => 'Submit',
 			);
+
+			$this->load->model('Feature_manager');
+			$this->data['features'] = $this->Feature_manager->get_all_features();
+			
 			$this->load->view('templates/admin/header.php');
 			$this->load->view('hotels/create_hotel', $this->data);
 		} else {
