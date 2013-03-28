@@ -26,22 +26,24 @@
 			<th>Feature Code</th>
 			<th>Feature Name</th>
 			<th>Feature Description</th>
-		</tr>
+		</tr></br>
+
 		<?php
-			echo "<tr>";
-			foreach ($features as $row) {
-				echo "<td>Check Box</td></br";
+			for ($i = 0; $i < count($features); $i++) {
+				$row = $features[$i];
+				echo "<tr>";
+
 				echo "<td>";
-				echo $row->id;
-				echo "</td></br>";
-				echo "<td>";
-				echo $row->name;
-				echo "</td></br>";
-				echo "<td>";
-				echo $row->description;
-				echo "</td></br>";
+				$format = "<input type=\"checkbox\" name=\"features[]\" value=\"%d\"><br>";
+				echo sprintf($format, $i);
+				echo "</td>";
+
+				echo "<td>".$row->id."</td>";
+				echo "<td>".$row->name."</td>";
+				echo "<td>".$row->description."</td>";
+				
+				echo "</tr>";
 			}
-			echo "</tr>";
 		?>
 	</table>
 
