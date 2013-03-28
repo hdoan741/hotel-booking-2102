@@ -15,6 +15,7 @@ class User extends CI_Model {
 	function __construct($attr=NULL) {
 		parent::__construct();
 		if($attr == NULL) return;
+		$this->id = $attr['id'];
 		$this->first_name = $attr['first_name'];
 		$this->last_name = $attr['last_name'];
 		$this->address = $attr['address'];

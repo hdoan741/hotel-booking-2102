@@ -8,6 +8,7 @@ class Feature extends CI_Model {
 	function __construct($attr=NULL) {
 		parent::__construct();
 		if($attr == NULL) return;
+		$this->id = $attr['id'];
 		$this->name = $attr['name'];
 		$this->description = $attr['description'];
 	}
