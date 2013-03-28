@@ -46,7 +46,7 @@ class Room extends CI_Model{
 		$query = $this->db->query($sql);
 	}
 
-	function _inInTable() {
+	function _inTable() {
 		$format = 'SELECT * FROM rooms WHERE room_code=\'%s\' AND hotel_code=\'%s\'';
 		$sql = sprintf($format, $this->room_code, $this->hotel_code);
 		$query = $this->db->query($sql);
@@ -59,7 +59,7 @@ class Room extends CI_Model{
 	}
 
 	function save() {
-		if ($this->_inInTable()) {
+		if ($this->_inTable()) {
 			$this->_update();
 		} else {
 			$this->_insert();
