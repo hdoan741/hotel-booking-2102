@@ -15,7 +15,7 @@ class Pages extends CI_Controller {
 		$this->load->model('Hotel_Feature_Manager');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
-		$data['user'] = $this->User_manager->get_user(1)->first_name;
+    $data['current_user'] = $this->ion_auth->user()->row();
 
  		$this->load->view('templates/header', $data);
 		$this->load->view('pages/'.$page, $data);
