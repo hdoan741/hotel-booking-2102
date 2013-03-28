@@ -49,6 +49,13 @@ body {
     margin-top: 10px;
   }
 
+  /* Content
+  -------------------------------------------------- */
+
+.content {
+  margin-top:80px;
+  padding:0 100px;
+}
 
 
   /* CUSTOMIZE THE CAROUSEL

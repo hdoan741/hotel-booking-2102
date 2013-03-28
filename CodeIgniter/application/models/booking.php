@@ -1,6 +1,6 @@
 <?php
 
-class User extends CI_Model {
+class Booking extends CI_Model {
 	var $id = NULL;
 	var $start_date = NULL;
 	var $end_date = NULL;
@@ -11,29 +11,30 @@ class User extends CI_Model {
 	function __construct($attr=NULL) {
 		parent::__construct();
 		if($attr == NULL) return;
-		$this->id = $attr['id'];
 		$this->start_date = $attr['start_date'];
-		$this->end_start = $attr['end_date'];
+		$this->end_date = $attr['end_date'];
 		$this->customer = $attr['customer'];
 		$this->num_child = $attr['num_child'];
+		$this->num_adult = $attr['num_adult'];
 	}
 
 	function save() {
-                if($id == NULL) {
-                        $sql = 'INSERT INTO bookings VALUES ('
-                                . $start_date  . ', '
-                                . $end_date . ', '
-                                . $customer . ', '
-                                . $num_child . ', '
-                                . $num_adult . ')';
+                if($this->id == NULL) {
+                        $sql = 'INSERT INTO bookings VALUES (NULL, \''
+                                . $this->start_date . '\', \''
+                                . $this->end_date . '\', \''
+                                . $this->customer . '\', '
+                                . $this->num_child . ', '
+                                . $this->num_adult . ')';
+			echo $sql;
                 } else {
                         $sql = 'UPDATE users SET '
-                                . 'start_date=' . $start_date . ', '
-                                . 'end_date=' . $end_date . ', '
-                                . 'customer=' . $customer . ', '
-                                . 'num_child=' . $num_child . ', '
-                                . 'num_adult=' . $num_adult . ', '
-                                . 'WHERE id=' . $id;
+                                . 'start_date=\'' . $this->start_date . '\', '
+                                . 'end_date=\'' . $this->end_date . '\', '
+                                . 'customer=\'' . $this->customer . '\', '
+                                . 'num_child=' . $this->num_child . ', '
+                                . 'num_adult=' . $this->num_adult . ', '
+                                . 'WHERE id=' . $this->id;
 		}
 		$this->db->query($sql);
 	}

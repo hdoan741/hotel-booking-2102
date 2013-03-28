@@ -11,6 +11,7 @@ class Pages extends CI_Controller {
 
 		$this->load->database();
 		$this->load->model('Usermanager');
+		$this->load->model('Featuremanager');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
     $current_user = $this->ion_auth->user()->row();

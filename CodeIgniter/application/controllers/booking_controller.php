@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Booking extends CI_Controller {
+class Booking_Controller extends CI_Controller {
 
 	function __construct()
 	{
@@ -13,8 +13,16 @@ class Booking extends CI_Controller {
 	function create_booking() {
 		$this->form_validation->set_rules('start_date', 'Start Date', 'required');		
 		$this->form_validation->set_rules('end_date', 'End Date', 'required');
+		$this->form_validation->set_rules('location', 'Location', 'required');
 	
 		if($this->form_validation->run() == false) {
+			$this->data['location'] = array(
+				'name' => 'location',
+				'id' => 'location',
+				'type' => 'text',
+				'placeholder' => 'please specify location',
+				'value' => $this->form_validation->set_value('location'),
+			);
 			$this->data['start_date'] = array(
 				'name' => 'start_date',
 				'id' => 'start_date',
@@ -59,7 +67,18 @@ class Booking extends CI_Controller {
 			$this->load->view('booking/create_booking', $this->data);
 		} else {
 			redirect('booking/hotel_list', 'refresh');
-		}	
+/*			$this->load->model('Bookingmanager');
+			$attr = array(
+				'start_date' => $this->input->post('start_date'),
+				'end_date' => $this->input->post('end_date'),
+				'customer' => 'aaa',
+				'num_child' => (int)$this->input->post('num_child'),
+				'num_adult' => (int)$this->input->post('num_adult'),
+			);
+			echo serialize($attr);
+			$booking = $this->Bookingmanager->new_booking($attr);
+			$booking->save();
+*/		}	
 	}
 
 	function hotel_list() {

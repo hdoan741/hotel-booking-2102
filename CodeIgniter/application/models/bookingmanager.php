@@ -6,11 +6,18 @@ class Bookingmanager extends CI_Model {
 		parent::__construct();
 	}
 
-	function get_user($id) {
+	function get_booking($id) {
 		$sql = 'SELECT * FROM bookings WHERE id=' . $id;
 		$query = $this->db->query($sql);
 		$row = $query->row_array();
 		include APPPATH . 'models/booking.php';
 		return new Booking($row);
+	}
+
+	function new_booking($attr) {
+		include APPPATH . 'models/booking.php';
+		$booking = new Booking($attr);
+		//echo $booking->customer;
+		return $booking;
 	}
 }
