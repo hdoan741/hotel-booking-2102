@@ -17,7 +17,8 @@ class Hotel_Feature_Manager extends CI_Model {
 		$this->load->model('Hotel_manager');
 		$hotels = array();
 		foreach($query->result_array() as $row) {
-			array_push($hotels, $this->Hotel_manager->get_hotel($row['hotel_code']));
+			$hotel = $this->Hotel_manager->get_hotel($row['hotel_code']);		
+			array_push($hotels, $hotel);
 		}
 		return $hotels;
 	}
@@ -25,10 +26,10 @@ class Hotel_Feature_Manager extends CI_Model {
 	function get_features($hotel_code) {
 		$sql = 'SELECT feature_id FROM hotel_feature WHERE hotel_code=\'' . $hotel_code . '\'';
 		$query = $this->db->query($sql);
-		$this->load->models('Hotel_manager');
+		$this->load->models('Hotel_Feature_Manager');
 		$features = array();
 		foreach($query->result_array() as $row) {
-			array_push($features, Feature_manager->get_feature($row['feature_id']));
+			array_push($features, $this->Hotel_Feature_Manager->get_feature($row['feature_id']));
 		}
 		return $features;
 	}

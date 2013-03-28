@@ -1,46 +1,57 @@
-<h1><?php echo lang('create_user_heading');?></h1>
-<p><?php echo lang('create_user_subheading');?></p>
+<div class="container content">
+  <h1 class="page-header"><?php echo lang('create_user_heading');?></h1>
+  <p><?php echo lang('create_user_subheading');?></p>
+  <br/>
 
-<div id="infoMessage"><?php echo $message;?></div>
+  <div id="infoMessage"><?php echo $message;?></div>
 
-<?php echo form_open("auth/create_user");?>
+  <?php echo form_open("auth/create_user", Array('class' => 'form-horizontal'));?>
 
-      <p>
-            <?php echo lang('create_user_fname_label', 'first_name');?> <br />
-            <?php echo form_input($first_name);?>
-      </p>
+    <div class="control-group">
+      <label class="control-label">First Name</label>
+      <div class="controls">
+        <?php echo form_input($first_name);?>
+      </div>
+    </div>
 
-      <p>
-            <?php echo lang('create_user_lname_label', 'first_name');?> <br />
-            <?php echo form_input($last_name);?>
-      </p>
+    <div class="control-group">
+      <label class="control-label">Last Name</label>
+      <div class="controls">
+        <?php echo form_input($last_name);?>
+      </div>
+    </div>
 
-      <p>
-            <?php echo lang('create_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
-      </p>
+    <div class="control-group">
+      <label class="control-label">Email</label>
+      <div class="controls">
+        <?php echo form_input($email);?>
+      </div>
+    </div>
 
-      <p>
-            <?php echo lang('create_user_email_label', 'email');?> <br />
-            <?php echo form_input($email);?>
-      </p>
+    <div class="control-group">
+      <label class="control-label">Phone</label>
+      <div class="controls">
+        <?php echo form_input($phone);?>
+      </div>
+    </div>
 
-      <p>
-            <?php echo lang('create_user_phone_label', 'phone');?> <br />
-            <?php echo form_input($phone1);?>-<?php echo form_input($phone2);?>-<?php echo form_input($phone3);?>
-      </p>
+    <div class="control-group">
+      <label class="control-label">Password</label>
+      <div class="controls">
+        <?php echo form_input($password);?>
+      </div>
+    </div>
 
-      <p>
-            <?php echo lang('create_user_password_label', 'password');?> <br />
-            <?php echo form_input($password);?>
-      </p>
+    <div class="control-group">
+      <label class="control-label">Confirm Password</label>
+      <div class="controls">
+        <?php echo form_input($password_confirm);?>
+      </div>
+    </div>
 
-      <p>
-            <?php echo lang('create_user_password_confirm_label', 'password_confirm');?> <br />
-            <?php echo form_input($password_confirm);?>
-      </p>
+    <div class="form-actions">
+      <?php echo form_submit(Array('value' => 'Register', 'class' => 'btn btn-primary'));?>
+    </div>
 
-
-      <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
-
-<?php echo form_close();?>
+  <?php echo form_close();?>
+</div>
