@@ -1,28 +1,39 @@
-<h1><?php echo lang('login_heading');?></h1>
-<p><?php echo lang('login_subheading');?></p>
 
-<div id="infoMessage"><?php echo $message;?></div>
+<div class="container content">
+  <h1 class="page-header"><?php echo lang('login_heading');?></h1>
+  <p><?php echo lang('login_subheading');?></p>
+  <br/>
 
-<?php echo form_open("auth/login");?>
+  <div id="infoMessage"><?php echo $message;?></div>
 
-  <p>
-    <?php echo lang('login_identity_label', 'indentity');?>
-    <?php echo form_input($identity);?>
-  </p>
+  <?php echo form_open("auth/login", Array('class' => 'form-horizontal'));?>
 
-  <p>
-    <?php echo lang('login_password_label', 'password');?>
-    <?php echo form_input($password);?>
-  </p>
+    <div class="control-group">
+      <label class="control-label">Email</label>
+      <div class="controls">
+        <?php echo form_input($identity);?>
+      </div>
+    </div>
 
-  <p>
-    <?php echo lang('login_remember_label', 'remember');?>
-    <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-  </p>
+    <div class="control-group">
+      <label class="control-label">Password</label>
+      <div class="controls">
+        <?php echo form_input($password);?>
+      </div>
+    </div>
 
+    <div class="control-group">
+      <div class="controls">
+        <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+        Remember me
+      </div>
+    </div>
 
-  <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
+    <div class="form-actions">
+      <?php echo form_submit(Array('value' => lang('login_submit_btn'), 'class' => 'btn btn-primary'));?>
+    </div>
 
-<?php echo form_close();?>
+  <?php echo form_close();?>
 
-<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+  <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+</div>
