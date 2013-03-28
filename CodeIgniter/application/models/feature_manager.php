@@ -4,7 +4,7 @@ class Feature_Manager extends CI_Model {
 
 	function __construct() {
 		parent::__construct();
-		include APPPATH . 'models/feature.php';
+		$this->load->model('feature');
 	}
 
 	function new_feature($attr) {

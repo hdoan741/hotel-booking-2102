@@ -4,7 +4,7 @@ class Hotel_Feature_Manager extends CI_Model {
 
 	function __construct() {
 		parent::__construct();
-		include APPPATH . 'models/hotel_feature.php';
+		$this->load->model('hotel_feature');
 	}
 
 	function new_hotel_feature($attr) {
