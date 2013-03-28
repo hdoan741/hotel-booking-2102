@@ -12,13 +12,9 @@ class Test extends CI_Controller {
 		$this->load->database();
 		$this->load->model('User_manager');
 		$this->load->model('Feature_manager');
-		$this->load->model('Hotel_Feature_Manager');
-
-		$data['title'] = ucfirst($page); // Capitalize the first letter
-		$data['user'] = $this->User_manager->get_user(1)->first_name;
-
- 		$this->load->view('templates/header', $data);
-		$this->load->view('pages/'.$page, $data);
-		$this->load->view('templates/footer', $data);
+		$this->load->model('Hotel_Feature');
+		
+		$hotel = new Hotel_Feature(array('hotel_code'=>'b', 'feature_id'=>2));
+		$hotel->insert();
 	}
 }

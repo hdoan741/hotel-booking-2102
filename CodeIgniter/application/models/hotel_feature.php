@@ -12,10 +12,11 @@ class Hotel_Feature extends CI_Model {
 	}
 
 	function insert() {
-		$sql = 'INSERT INTO features 
-			(feature_id, hotel_code) VALUES (\''
-			. $this->feature_id  . '\', \''
+		$sql = 'INSERT INTO hotel_feature
+			(feature_id, hotel_code) VALUES ('
+			. $this->feature_id  . ', \''
 			. $this->hotel_code . '\')';
+		echo $sql;
 		$this->db->query($sql);
 	}
 }
