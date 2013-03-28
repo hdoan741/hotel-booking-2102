@@ -14,7 +14,7 @@ class Test extends CI_Controller {
 		$this->load->model('Feature_manager');
 		$this->load->model('Hotel_Feature');
 		
-		$hotel = new Hotel_Feature(array('hotel_code'=>'b', 'feature_id'=>2));
-		$hotel->insert();
+		$feature = new Feature(array('name'=>'b', 'description'=>'bbb'));
+		$feature->save();
 	}
 }
