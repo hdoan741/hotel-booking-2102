@@ -17,13 +17,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Amazing Hotels</a>
+          <a class="brand" href="/">Amazing Hotels</a>
           <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#hotels">Our Hotels</a></li>
-              <li><a href="#about">About Us</a></li>
+              <li><a href="/about">About Us</a></li>
               <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div><!--/.nav-collapse -->

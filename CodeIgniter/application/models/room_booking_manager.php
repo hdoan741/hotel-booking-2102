@@ -5,6 +5,7 @@ class Room_booking_manager extends CI_Model {
 		include APPPATH.'models/room_booking.php';
 	}
 
+	/*
 	function get_all_room_booking($hotel_code=NULL) {
 		$result_array = array();
 
@@ -23,6 +24,7 @@ class Room_booking_manager extends CI_Model {
 
 		return $result_array;
 	}
+	*/
 
 	function get_room_booking($room_code=NULL, $hotel_code=NULL, $booking_id=NULL) {
 		$sql;

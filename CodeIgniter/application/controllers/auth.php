@@ -770,7 +770,12 @@ class Auth extends CI_Controller {
 
 		$this->viewdata = (empty($data)) ? $this->data: $data;
 
-		$view_html = $this->load->view($view, $this->viewdata, $render);
+    $data['current_user'] = $this->ion_auth->user()->row();
+
+    $view_header = $this->load->view('templates/header', $data);
+		$view_content = $this->load->view($view, $this->viewdata, $render);
+    $view_footer = $this->load->view('templates/footer', $render);
+    $view_html = $view_header . $view_content . $view_footer;
 
 		if (!$render) return $view_html;
 	}
