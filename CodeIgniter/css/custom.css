@@ -19,8 +19,7 @@ body {
   left: 0;
   right: 0;
   z-index: 10;
-  margin-top: 20px;
-  margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+  margin-bottom: -90px;
   }
   .navbar-wrapper .navbar {
 
@@ -85,21 +84,21 @@ body {
   }
 
   .carousel .item {
-    height: 500px;
+    height: 1000px;
   }
   .carousel img {
     position: absolute;
     top: 0;
     left: 0;
     min-width: 100%;
-    height: 500px;
+    height: 1000px;
   }
 
   .carousel-caption {
-    background-color: transparent;
+    background-color:rgba(0, 0, 0, 0.7);
     position: static;
     max-width: 550px;
-    padding: 0 20px;
+    padding: 20px;
     margin-top: 200px;
   }
   .carousel-caption h1,
@@ -244,4 +243,22 @@ body {
     }
 
   }
+
+.search-form {
+  background-color: white;
+  border: 1px solid black;
+  position: absolute;
+  top: 100px;
+  left: 750px;
+  width: 500px;
+  z-index: 10000;
+}
+
+.search-header {
+  padding: 10px;
+  font-size: 3em;
+  background-color: #00355d;
+  color: white;
+}
+
 

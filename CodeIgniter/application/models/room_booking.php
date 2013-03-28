@@ -1,5 +1,5 @@
 <?php
-class Room_booking extends CIModel {
+class Room_booking extends CI_Model {
 	var $room_code = '';
 	var $hotel_code = '';
 	var $booking_id = 0;
