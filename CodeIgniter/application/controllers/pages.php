@@ -10,11 +10,12 @@ class Pages extends CI_Controller {
 		}
 
 		$this->load->database();
-		$this->load->model('Usermanager');
-		$this->load->model('Featuremanager');
+		$this->load->model('User_manager');
+		$this->load->model('Feature_manager');
+		$this->load->model('Hotel_Feature_Manager');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
-		$data['user'] = $this->Usermanager->get_user(1)->first_name;
+		$data['user'] = $this->User_manager->get_user(1)->first_name;
 /*		$attr = array(
 			'first_name' => 'a',
 			'last_name' => 'a',
@@ -27,11 +28,14 @@ class Pages extends CI_Controller {
 			'name' => 'a',
 			'description' => 'a',
 		);
-		$user = $this->Usermanager->new_user($attr);
+		$user = $this->User_manager->new_user($attr);
 		$user->save();
-		$feature = $this->Featuremanager->new_feature($attr);
+		$feature = $this->Feature_manager->new_feature($attr);
 		$feature->save();
 */
+
+	//	$feature = $this->Hotel_Feature_Manager->get_features(1);
+	//	echo $feature[0]->name;
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/'.$page, $data);
 		$this->load->view('templates/footer', $data);
