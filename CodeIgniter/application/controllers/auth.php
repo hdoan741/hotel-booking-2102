@@ -391,19 +391,15 @@ class Auth extends CI_Controller {
 	{
 		$this->data['title'] = "Create User";
 
-		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		if ($this->ion_auth->logged_in() && !$this->ion_auth->is_admin())
 		{
 			redirect('auth', 'refresh');
 		}
 
-		//validate form input
+		// validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email');
-		// $this->form_validation->set_rules('phone1', $this->lang->line('create_user_validation_phone1_label'), 'required|xss_clean|min_length[3]|max_length[3]');
-		// $this->form_validation->set_rules('phone2', $this->lang->line('create_user_validation_phone2_label'), 'required|xss_clean|min_length[3]|max_length[3]');
-		// $this->form_validation->set_rules('phone3', $this->lang->line('create_user_validation_phone3_label'), 'required|xss_clean|min_length[4]|max_length[4]');
-		// $this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
@@ -451,29 +447,11 @@ class Auth extends CI_Controller {
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('email'),
 			);
-			$this->data['company'] = array(
-				'name'  => 'company',
-				'id'    => 'company',
+			$this->data['phone'] = array(
+				'name'  => 'phone',
+				'id'    => 'phone',
 				'type'  => 'text',
-				'value' => $this->form_validation->set_value('company'),
-			);
-			$this->data['phone1'] = array(
-				'name'  => 'phone1',
-				'id'    => 'phone1',
-				'type'  => 'text',
-				'value' => $this->form_validation->set_value('phone1'),
-			);
-			$this->data['phone2'] = array(
-				'name'  => 'phone2',
-				'id'    => 'phone2',
-				'type'  => 'text',
-				'value' => $this->form_validation->set_value('phone2'),
-			);
-			$this->data['phone3'] = array(
-				'name'  => 'phone3',
-				'id'    => 'phone3',
-				'type'  => 'text',
-				'value' => $this->form_validation->set_value('phone3'),
+				'value' => $this->form_validation->set_value('phone'),
 			);
 			$this->data['password'] = array(
 				'name'  => 'password',
