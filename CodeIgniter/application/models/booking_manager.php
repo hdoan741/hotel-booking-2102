@@ -1,6 +1,6 @@
 <?php
 
-class Bookingmanager extends CI_Model {
+class Booking_Manager extends CI_Model {
 	
 	function __construct() {
 		parent::__construct();
@@ -17,7 +17,6 @@ class Bookingmanager extends CI_Model {
 	function new_booking($attr) {
 		include APPPATH . 'models/booking.php';
 		$booking = new Booking($attr);
-		//echo $booking->customer;
 		return $booking;
 	}
 }

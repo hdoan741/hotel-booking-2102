@@ -1,6 +1,6 @@
 <?php
 
-class Usermanager extends CI_Model {
+class User_Manager extends CI_Model {
 
 	function __construct() {
 		parent::__construct();
@@ -23,7 +23,7 @@ class Usermanager extends CI_Model {
 		$query = $this->db->query($sql);
 		$users = array();
 		
-		foreach($query->result() as $row) {
+		foreach($query->result_array() as $row) {
 			array_push($users, new User($row));
 		}
 		return users;

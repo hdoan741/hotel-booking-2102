@@ -16,9 +16,11 @@ class Hotel_manager extends CI_Model {
 	}
 
 	function get_hotel($hotel_code) {
-		if ($hotel_code === NULL) return NULL;
+		if ($hotel_code === NULL) {
+			return $this->get_all_hotels();
+		}
 		
-		$format = 'SELECT * FROM hotel WHERE hotel_code = \'%s\'';
+		$format = 'SELECT * FROM hotels WHERE hotel_code = \'%s\'';
 		$sql = sprintf($format, $hotel_code);
 		$query = $this->db->query($sql);
 		if ($query->num_rows() > 0) {

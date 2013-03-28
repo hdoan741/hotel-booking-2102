@@ -48,6 +48,7 @@ $route['booking/hotel_list'] = "booking_controller/hotel_list";
 $route['hotels/create'] = "hotels_controller/create_hotel";
 $route['hotels/list'] = "hotels_controller/list_hotel";
 $route['migrate'] = "migrate";
+$route['test'] = "test/view";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 

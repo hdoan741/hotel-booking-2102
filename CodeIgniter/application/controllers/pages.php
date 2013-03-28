@@ -10,15 +10,15 @@ class Pages extends CI_Controller {
 		}
 
 		$this->load->database();
-		$this->load->model('Usermanager');
-		$this->load->model('Featuremanager');
+		$this->load->model('User_manager');
+		$this->load->model('Feature_manager');
+		$this->load->model('Hotel_Feature_Manager');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
-    $current_user = $this->ion_auth->user()->row();
-    $data['current_user'] = $current_user;
+		$data['user'] = $this->User_manager->get_user(1)->first_name;
 
-    $this->load->view('templates/header', $data);
-    $this->load->view('pages/'.$page, $data);
-    $this->load->view('templates/footer', $data);
+ 		$this->load->view('templates/header', $data);
+		$this->load->view('pages/'.$page, $data);
+		$this->load->view('templates/footer', $data);
 	}
 }
