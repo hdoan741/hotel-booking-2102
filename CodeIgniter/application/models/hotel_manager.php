@@ -33,5 +33,24 @@ class Hotel_manager extends CI_Model {
 	function delete_all_hotels() {
 		$query = $this->db->query('DELETE * FROM hotels');
 	}
-
+	
+	function search($location, $start_date, $end_date, $num_room) {
+		$format = 'SELECT h.hotel_code FROM hotels h, bookings b, rooms r, room_booking rb'
+			+ 'WHERE h.hotel_code = rb.hotel_code'
+			+ 'AND h.hotel_code = r.hotel_code'
+			+ 'AND r.room_code = rb.room_code'
+			+ 'AND b.id = rb.booking_id'
+			+ 'AND h.location = \'%s\''
+			+ 'AND b.start_date > \'%s\''
+			+ 'AND b.end_date < \'%s\''
+			+ 'GROUP BY h.hotel_code'
+			+ 'HAVING COUNT(r.room_code) >= %s';
+		$sql = sprintf($format, $location, $start_date, $end_date, $num_room);
+		$query = $this->db->query($sql);
+		$hotels = array();
+		foreach ($query->result_array() as $row) {
+			array_push($hotels, get_hotel($row['hotel_code']));
+		}
+		return $hotels;
+	}
 }
