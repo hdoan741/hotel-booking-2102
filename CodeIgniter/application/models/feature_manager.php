@@ -18,6 +18,11 @@ class Feature_Manager extends CI_Model {
 		return new Feature($row);
 	}
 
+	function remove_feature($id) {
+		$sql = 'DELETE FROM features WHERE id=' . $id;
+		$this->db->query($sql);
+	}
+
 	function get_all_features() {
 		$sql = 'SELECT * FROM features';
 		$query = $this->db->query($sql);

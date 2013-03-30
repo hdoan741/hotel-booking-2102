@@ -27,6 +27,11 @@ class Feature extends CI_Model {
 		}
 		$this->db->query($sql);
 	}
+
+	function delete() {
+		$sql = 'DELETE FROM features WHERE id = ' . $this->id;
+		$this->db->query($sql);
+	}
 }
 
 ?>
