@@ -144,6 +144,17 @@ class Hotels_Controller extends CI_Controller {
 		}	
 	}
 
+	public function delete_hotel($hotel_code) {
+		$hotel = $this->Hotel_manager->get_hotel($hotel_code);
+		$hotel->delete();
+
+		$this->data['hotel'] = $hotel;
+		if ($hotel != NULL) {
+			$this->load->view('templates/admin/header.php');
+			$this->load->view('hotels/delete_hotel_result', $this->data);
+		}
+	}
+
 	public function list_hotel() {
 
 		$this->load->model('Hotel_manager');
