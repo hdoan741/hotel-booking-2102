@@ -13,8 +13,7 @@ class Test extends CI_Controller {
 		$this->load->model('User_manager');
 		$this->load->model('Feature_manager');
 		$this->load->model('Hotel_Feature');
-		
-		$feature = new Feature(array('name'=>'b', 'description'=>'bbb'));
-		$feature->save();
+		$this->load->model('Hotel_Feature_manager');		
+		//echo serialize($this->Hotel_Feature_manager->get_features('a'));
 	}
 }
