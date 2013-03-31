@@ -1,6 +1,6 @@
 <div class="container content">
 	<h1>Update A Hotel</h1>
-	<?php echo form_open('/hotels/update', array('class'=>'form-horizontal')); ?>
+	<?php echo form_open('/hotels/update/'.$hotel_code['value'], array('class'=>'form-horizontal')); ?>
 	<div class="control-group">
 		<label class="control-label" for="hotel_code">Hotel Code</label>
 		<div class="controls">

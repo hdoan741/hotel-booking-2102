@@ -48,8 +48,8 @@ class Hotels_Controller extends CI_Controller {
 			$this->load->view('hotels/create_hotel', $this->data);
 		} else {
 			$hotel_data = array('hotel_code' => $_POST['hotel_code'],
-								'name' => $_POST['name'],
-								'location' => $_POST['location']);
+				'name' => $_POST['name'],
+				'location' => $_POST['location']);
 
 			$hotel = new Hotel($hotel_data);
 			if (!$hotel->inTable()) {
@@ -60,7 +60,7 @@ class Hotels_Controller extends CI_Controller {
 				foreach ($features as $feature_id) {
 					$hotel_code = $hotel->hotel_code;
 					$hotel_feature = new Hotel_feature(array('feature_id' => $feature_id, 
-															'hotel_code' => $hotel_code));
+						'hotel_code' => $hotel_code));
 					$hotel_feature->insert();
 				}
 
@@ -83,6 +83,7 @@ class Hotels_Controller extends CI_Controller {
 				'id' => 'hotel_code',
 				'type' => 'text',
 				'value' => $hotel->hotel_code,
+				'readonly' => 'readonly',
 				);
 			$this->data['name'] = array(
 				'name' => 'name',
@@ -119,13 +120,13 @@ class Hotels_Controller extends CI_Controller {
 			$this->load->view('templates/admin/header.php');
 			$this->load->view('hotels/update_hotel', $this->data);
 		} else {
-			/*
 			$hotel_data = array('hotel_code' => $_POST['hotel_code'],
-								'name' => $_POST['name'],
-								'location' => $_POST['location']);
+				'name' => $_POST['name'],
+				'location' => $_POST['location']);
 
 			$hotel = new Hotel($hotel_data);
-			if (!$hotel->inTable()) {
+			if ($hotel->inTable()) {
+				$this->Hotel_Feature_Manager->remove_features($hotel->hotel_code);
 
 				$features = $_POST['features'];
 				// echo count($features);
@@ -133,14 +134,13 @@ class Hotels_Controller extends CI_Controller {
 				foreach ($features as $feature_id) {
 					$hotel_code = $hotel->hotel_code;
 					$hotel_feature = new Hotel_feature(array('feature_id' => $feature_id, 
-															'hotel_code' => $hotel_code));
+						'hotel_code' => $hotel_code));
 					$hotel_feature->insert();
 				}
 
 				$this->load->view('templates/admin/header.php');
-				$this->load->view('hotels/create_hotel_result', $hotel_data);
+				$this->load->view('hotels/update_hotel_result', $hotel_data);
 			}
-			*/
 		}	
 	}
 

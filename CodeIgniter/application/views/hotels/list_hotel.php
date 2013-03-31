@@ -1,5 +1,0 @@
-<head>
-</head>
-
-<body>
-</body>
