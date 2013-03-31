@@ -1,3 +1,26 @@
+27 March
+
+Hung:
+- Search box
+- Display of search result
+
+Carmen:
+- Booking view: hotel and list of room
+
+Tien:
+- Creating, editting hotel, room, etc.
+
+Biyan:
+- Backend for search.
+- Update database schema.
+
+Van:
+- Report
+
+Next meeting: 7h30 Wednesday 3 April
+
+========================================================
+
 23 March
 
 Todo:

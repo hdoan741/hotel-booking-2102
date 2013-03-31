@@ -81,7 +81,10 @@ class Booking_Controller extends CI_Controller {
 */		}	
 	}
 
-	function hotel_list() {
-		$this->load->view('booking/hotel_list');
+	function booking_list() {
+		$this->load->model('Booking_manager');
+		$this->data['bookings'] = $this->Booking_manager->get_all_bookings();
+		$this->load->view('templates/admin/header.php');
+		$this->load->view('booking/booking_list', $this->data);
 	}
 }	
