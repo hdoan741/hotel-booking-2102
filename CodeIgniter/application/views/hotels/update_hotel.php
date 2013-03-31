@@ -40,7 +40,7 @@
 					echo "<td>";
 					// $format = "<input type=\"checkbox\" name=\"features[]\" value=\"%d\"><br>";
 					// echo sprintf($format, $i);
-					echo form_checkbox('features[]', $row->feature_code, $checkbox[$i]);
+					echo form_checkbox('features[]', $row->id, $checkbox[$i]);
 					echo "</td>";
 
 					echo "<td>".$row->id."</td>";

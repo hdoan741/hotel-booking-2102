@@ -109,8 +109,8 @@ class Hotels_Controller extends CI_Controller {
 			$hotel_features = $this->Hotel_Feature_Manager->get_features($hotel_code);
 			for ($i = 0; $i < count($this->data['features']); $i++) {
 				$this->data['checkbox'][$i] = FALSE;
-				foreach ($hotel_features as $feature) {
-					if ($this->data['features'][$i]->feature_code === $feature->feature_code) {
+				foreach ($hotel_features as $row) {
+					if ($this->data['features'][$i]->id === $row->id) {
 						$this->data['checkbox'][$i] = TRUE;
 					}
 				}
