@@ -24,6 +24,7 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="/hotels/list">Hotels</a></li>
               <li><a href="/features/list">Features</a></li>
+              <li><a href="/booking/list">Bookings</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!-- /.navbar-inner -->

@@ -19,4 +19,15 @@ class Booking_Manager extends CI_Model {
 		$booking = new Booking($attr);
 		return $booking;
 	}
+
+	function get_all_bookings() {
+		$sql = 'SELECT * FROM bookings';
+		$query = $this->db->query($sql);
+		$bookings = array();		
+		
+		foreach($query->result_array() as $row) {
+			array_push($bookings, new Booking($row));
+		}
+		return $bookings;
+	}
 }
