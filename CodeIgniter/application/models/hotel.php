@@ -38,7 +38,7 @@ class Hotel extends CI_Model{
 		$this->db->query($sql);
 	}
 
-	function _inTable() {
+	function inTable() {
 		$sql = 'SELECT * FROM hotels WHERE hotel_code=\''.$this->hotel_code.'\'';
 		
 		$query = $this->db->query($sql);
@@ -51,7 +51,7 @@ class Hotel extends CI_Model{
 	}
 
 	function save() {
-		if ($this->_inTable()) {
+		if ($this->inTable()) {
 			$this->_update();
 		} else {
 			$this->_insert();
@@ -59,7 +59,7 @@ class Hotel extends CI_Model{
 	}
 
 	function delete() {
-		if ($this->_inTable()) {
+		if ($this->inTable()) {
 			$format = 'DELETE FROM hotels WHERE hotel_code=\'%s\'';
 			$sql = sprintf($format, $this->hotel_code);
 			$this->db->query($sql);

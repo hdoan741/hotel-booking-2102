@@ -47,6 +47,7 @@ $route['booking/create_booking'] = "booking_controller/create_booking";
 $route['booking/hotel_list'] = "booking_controller/hotel_list";
 $route['hotels/create'] = "hotels_controller/create_hotel";
 $route['hotels/list'] = "hotels_controller/list_hotel";
+$route['hotels/update/(:any)'] = 'hotels_controller/update_hotel/$1';
 $route['features/list'] = "feature_controller/list_features";
 $route['features/create'] = "feature_controller/create_feature";
 $route['migrate'] = "migrate";
