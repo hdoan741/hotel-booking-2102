@@ -1,7 +1,7 @@
 <?php
 class Room extends CI_Model{
 	var $room_code = '';
-	var $num_bed = 0;
+	var $type = '';
 	var $comfort_level = '';
 	var $hotel_code = '';
 	var $max_capacity = 0;
@@ -12,15 +12,15 @@ class Room extends CI_Model{
 
 		if ($data != NULL) {
 			if (is_array($data)) {
-				$this->room_code = $data['hotel_code'];
-				$this->num_bed = $data['num_bed'];
+				$this->room_code = $data['room_code'];
+				$this->type = $data['type'];
 				$this->comfort_level = $data['comfort_level'];
 				$this->hotel_code = $data['hotel_code'];
 				$this->max_capacity = $data['max_capacity'];
 				$this->price = $data['price'];
 			} else {	
 				$this->room_code = $data->room_code;
-				$this->num_bed = $data->num_bed;
+				$this->type = $data->type;
 				$this->comfort_level = $data->confort_level;
 				$this->hotel_code = $data->hotel_code;
 				$this->max_capacity = $data->max_capacity;
@@ -31,21 +31,21 @@ class Room extends CI_Model{
 
 	function _insert() {
 		$room_code = $this->room_code;
-		$num_bed = $this->num_bed;
+		$type = $this->type;
 		$comfort_level = $this->comfort_level;
 		$hotel_code = $this->hotel_code;
 		$max_capacity = $this->max_capacity;
 		$price = $this->price;
 		
-		$format = 'INSERT INTO rooms (room_code, num_bed, comfort_level, hotel_code, max_capacity, price) VALUES(\'%s\', %d, \'%s\', \'%s\', %d, %d)';
-		$sql = sprintf($format, $room_code, $num_bed, $comfort_level, $hotel_code, $max_capacity, $price);
+		$format = 'INSERT INTO rooms (room_code, type, comfort_level, hotel_code, max_capacity, price) VALUES(\'%s\', \'%s\', \'%s\', \'%s\', %d, %d)';
+		$sql = sprintf($format, $room_code, $type, $comfort_level, $hotel_code, $max_capacity, $price);
 		
 		$query = $this->db->query($sql);
 	}
 
 	function _update() {
-		$format = 'UPDATE rooms SET num_bed=%d, comfort_level=\'%s\', max_capacity=%d, price=%d WHERE room_code=\'%s\' AND hotel_code=\'%s\'';
-		$sql = sprintf($format, $this->num_bed, $this->comfort_level, $this->max_capacity, $this->price, $this->room_code, $this->hotel_code);
+		$format = 'UPDATE rooms SET type=\'%s\', comfort_level=\'%s\', max_capacity=%d, price=%d WHERE room_code=\'%s\' AND hotel_code=\'%s\'';
+		$sql = sprintf($format, $this->type, $this->comfort_level, $this->max_capacity, $this->price, $this->room_code, $this->hotel_code);
 		
 		$query = $this->db->query($sql);
 	}

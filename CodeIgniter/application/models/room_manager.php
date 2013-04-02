@@ -3,7 +3,7 @@ class Room_manager extends CI_Model {
 
 	function __construct() {
 		parent::__construct();
-		include APPPATH .'models/room.php';
+		$this->load->model('Room');
 	}
 
 	/*
