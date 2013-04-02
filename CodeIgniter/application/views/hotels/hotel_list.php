@@ -14,7 +14,7 @@
 			<td><?php echo $hotel->hotel_code;?></td>
 			<td><?php echo $hotel->name;?></td>
 			<td><?php echo $hotel->location;?></td>
-			<td><i class="icon-pencil"></i></td>
+			<td><a href="/hotels/update/<?php echo $hotel->hotel_code; ?>"><i class="icon-pencil"></i></a></td>
 			<td><a href="/hotels/delete/<?php echo $hotel->hotel_code; ?>"><i class="icon-trash"></i></a></td>
 		</tr>
 	<?php endforeach;?>
