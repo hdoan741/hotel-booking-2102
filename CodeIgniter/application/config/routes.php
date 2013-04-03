@@ -52,6 +52,7 @@ $route['hotels/delete/(:any)'] = 'hotels_controller/delete_hotel/$1';
 $route['features/list'] = "feature_controller/list_features";
 $route['features/create'] = "feature_controller/create_feature";
 $route['features/delete/(:any)'] = "feature_controller/delete_feature/$1";
+$route['features/update/(:any)'] = "feature_controller/update_feature/$1";
 $route['select/(:any)'] = "hotels_controller/get_all_hotel_details/$1";
 $route['migrate'] = "migrate";
 $route['search'] = "pages/search";
