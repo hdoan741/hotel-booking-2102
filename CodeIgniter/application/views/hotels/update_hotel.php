@@ -50,6 +50,12 @@ $(document).ready(function(){
 			<?php echo form_input($location); ?>
 		</div>
 	</div>
+	<div class="control-group">
+		<label class="control-label" for="image_url">Image URL</label>
+		<div class="controls">
+			<?php echo form_input($image_url); ?>
+		</div>
+	</div>
 
 	<div>
 		<table id="features_div" class="table table-condensed">

@@ -36,6 +36,11 @@ class Hotels_Controller extends CI_Controller {
 				'id' => 'location',
 				'type' => 'text',
 				);
+			$this->data['image_url'] = array(
+				'name' => 'image_url',
+				'id' => 'image_url',
+				'type' => 'text',
+				);
 			$this->data['hotel_submit'] = array(
 				'name' => 'hotel_submit',
 				'id' => 'hotel_submit',
@@ -51,7 +56,8 @@ class Hotels_Controller extends CI_Controller {
 		} else {
 			$hotel_data = array('hotel_code' => $_POST['hotel_code'],
 				'name' => $_POST['name'],
-				'location' => $_POST['location']);
+				'location' => $_POST['location'],
+				'image_url' => $_POST['image_url']);
 
 			$hotel = new Hotel($hotel_data);
 			if (!$hotel->inTable()) {
@@ -131,6 +137,12 @@ class Hotels_Controller extends CI_Controller {
 				'type' => 'text',
 				'value' => $hotel->location,
 				);
+			$this->data['image_url'] = array(
+				'name' => 'image_url',
+				'id' => 'image_url',
+				'type' => 'text',
+				'value' => $hotel->image_url,
+				);
 			$this->data['hotel_submit'] = array(
 				'name' => 'hotel_submit',
 				'id' => 'hotel_submit',
@@ -175,7 +187,8 @@ class Hotels_Controller extends CI_Controller {
 		} else {
 			$hotel_data = array('hotel_code' => $_POST['hotel_code'],
 				'name' => $_POST['name'],
-				'location' => $_POST['location']);
+				'location' => $_POST['location'],
+				'image_url' => $_POST['image_url']);
 
 			$hotel = new Hotel($hotel_data);
 			if ($hotel->inTable()) {
@@ -184,13 +197,18 @@ class Hotels_Controller extends CI_Controller {
 				$features = $_POST['features'];
 				// echo count($features);
 				$hotel->save();
-				foreach ($features as $feature_id) {
-					$hotel_code = $hotel->hotel_code;
-					$hotel_feature = new Hotel_feature(array('feature_id' => $feature_id, 
-						'hotel_code' => $hotel_code));
-					$hotel_feature->insert();
+			
+				if (isset($_POST['features'])) {
+					$features = $_POST['features'];
+					if (count($features) > 0) {
+						foreach ($features as $feature_id) {
+							$hotel_code = $hotel->hotel_code;
+							$hotel_feature = new Hotel_feature(array('feature_id' => $feature_id, 
+								'hotel_code' => $hotel_code));
+							$hotel_feature->insert();
+						}
+					}
 				}
-
 
 				$this->Room_manager->delete_room(NULL, $hotel->hotel_code);
 

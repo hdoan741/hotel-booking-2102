@@ -3,6 +3,7 @@ class Hotel extends CI_Model{
 	var $hotel_code = '';
 	var $name = '';
 	var $location = '';
+	var $image_url = '';
 
 	function __construct($data=NULL) {
 		parent::__construct();
@@ -12,10 +13,12 @@ class Hotel extends CI_Model{
 				$this->hotel_code = $data['hotel_code'];
 				$this->name = $data['name'];
 				$this->location = $data['location'];
+				$this->image_url = $data['image_url'];
 			} else {	
 				$this->hotel_code = $data->hotel_code;
 				$this->name = $data->name;
 				$this->location = $data->location;
+				$this->image_url = $data['image_url'];
 			}
 		}
 	}
@@ -24,16 +27,17 @@ class Hotel extends CI_Model{
 		$name = $this->name;
 		$location = $this->location;
 		$hotel_code = $this->hotel_code;
+		$image_url = $this->image_url;
 		
-		$format = 'INSERT INTO hotels (name, location, hotel_code) VALUES(\'%s\', \'%s\', \'%s\')';
-		$sql = sprintf($format, $name, $location, $hotel_code);
+		$format = 'INSERT INTO hotels (name, location, hotel_code, image_url) VALUES(\'%s\', \'%s\', \'%s\', \'%s\')';
+		$sql = sprintf($format, $name, $location, $hotel_code, $image_url);
 		
 		$this->db->query($sql);
 	}
 
 	function _update() {
-		$format = 'UPDATE hotels SET name=\'%s\', location=\'%s\' WHERE hotel_code=\'%s\'';
-		$sql = sprintf($format, $this->name, $this->location, $this->hotel_code);
+		$format = 'UPDATE hotels SET name=\'%s\', location=\'%s\', image_url=\'%s\' WHERE hotel_code=\'%s\'';
+		$sql = sprintf($format, $this->name, $this->location, $this->image_url,$this->hotel_code);
 		
 		$this->db->query($sql);
 	}
