@@ -109,26 +109,26 @@ class Room_manager extends CI_Model {
 
 	function search($hotel_code, $start_date, $end_date) {
                 $format = 'SELECT r.room_code FROM rooms r'
-                        . 'WHERE r.room_code NOT IN ('
-                        .       'SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
-                        .       'WHERE rb.booking_id = b.id'
-                        .       'AND ('
-                        .               '(b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-                        .               'OR'
-                        .               '(b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-                        .               'OR'
-                        .               '(b.start_date >= \'%s\' AND b.end_date <= \'%s\')'
-                        .               'OR'
-                        .               '(b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-                        .       ')'
-                        . ')'
-                        . 'AND r.hotel_code = \'%s\'';
+                        . ' WHERE r.room_code NOT IN ('
+                        .       ' SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
+                        .       ' WHERE rb.booking_id = b.id'
+                        .       ' AND ('
+                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+                        .               ' OR'
+                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+                        .               ' OR'
+                        .               ' (b.start_date >= \'%s\' AND b.end_date <= \'%s\')'
+                        .               ' OR'
+                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+                        .       ' )'
+                        . ' )'
+                        . ' AND r.hotel_code = \'%s\'';
                 $sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, 
 			$start_date, $end_date, $start_date, $end_date, $hotel_code);
 		$query = $this->db->query($sql);
                 $rooms = array();
                 foreach ($query->result_array() as $row) {
-                        array_push($rooms, get_room($row['room_code']));
+                        array_push($rooms, $this->get_room($row['room_code']));
                 }
                 return $rooms;
         }
