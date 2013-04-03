@@ -48,7 +48,7 @@
     <div class="control-group">
       <label class="control-label">Number of Rooms</label>
       <div class="controls">
-        <input type="text" name="room_num" value="1"/>
+        <input type="text" name="room" value="1"/>
       </div>
     </div>
     <div class="control-group">

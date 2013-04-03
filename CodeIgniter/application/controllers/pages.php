@@ -34,6 +34,8 @@ class Pages extends CI_Controller {
 
 		$this->load->model('Hotel_manager');
 		$this->data['hotels'] = $available_hotels;
+    $this->data['location'] = $location;
+    $this->data['num_of_rooms'] = $num_of_room;
     $this->data['start_date'] = $start_date;
     $this->data['end_date'] = $end_date;
 

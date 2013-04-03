@@ -265,4 +265,6 @@ body {
   color: white;
 }
 
-
+.hotel_img_small {
+  height: 100px;
+}
