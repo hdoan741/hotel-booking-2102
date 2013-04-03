@@ -64,7 +64,7 @@ class Hotel_manager extends CI_Model {
 			. 'AND h.hotel_code = r.room_code'
 			. 'AND h.location = \'%s\''
 			. 'GROUP BY h.hotel_code'
-			. 'HAVING COUNT(h.hotel_code) >= \'%s\'';
+			. 'HAVING COUNT(h.hotel_code) >= %s';
 		$sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, $start_date, $end_date, 
 				$start_date, $end_date, $location, $num_room);
 		$query = $this->db->query($sql);
