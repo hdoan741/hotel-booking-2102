@@ -13,5 +13,7 @@ $(document).ready(function() {
     }
   );
   $('#reservation').attr('value', start_date.toString('dd/MM/yyyy') + ' - ' + end_date.toString('dd/MM/yyyy'));
+  $('#booking_start').attr('value', start_date.toString('dd/MM/yyyy'));
+  $('#booking_end').attr('value', end_date.toString('dd/MM/yyyy'));
 });
 
