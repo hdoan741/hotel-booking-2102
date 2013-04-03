@@ -1,32 +1,32 @@
 <script>
-		var currentRow = 0;
+var currentRow = 0;
 
-		function add_room() {	
-			var col1 = '<input type=\"text\" name=\"room_code[]\" />';
-			var col2 = '<input type=\"text\" name=\"room_type[]\" />';
-			var col3 = '<input type=\"text\" name=\"room_comfort[]\" />';
-			var col4 = '<input type=\"text\" name=\"room_price[]\" />';
-			var col5 = '<a onclick=\"delete_room(' + ('\'' + currentRow + '\'') + ')\"><i class="icon-trash"></i></a>';
+function add_room() {	
+	var col1 = '<select name=\"room_type[]\"><option value=\"single\" selected=\"selected\">Single</option><option value=\"double\">Double</option><option value=\"triple\">Triple</option></select>';  
+	var col2 = '<select name=\"room_comfort[]\"><option value=\"standard\" selected=\"selected\">Standard</option><option value=\"luxury\">Luxury</option><option value=\"superior\">Superior</option></select>';  
+	var col3 = '<input type=\"text\" name=\"room_price[]\" />';
+	var col4 = '<input type=\"text\" name=\"room_amount[]\" />';
+	var col5 = '<a onclick=\"delete_room(' + ('\'' + currentRow + '\'') + ')\"><i class="icon-trash"></i></a>';
 
-			$('#rooms_div > tbody:last').append('<tr id=\"room' + currentRow +'\">' + 
-					'<td>' + col1 + '</td>' +
-					'<td>' + col2 + '</td>' +
-					'<td>' + col3 + '</td>' + 
-					'<td>' + col4 + '</td>' +
-					'<td>' + col5 + '</td>' + '</tr>');
-			currentRow++;
-		}
+	$('#rooms_div > tbody:last').append('<tr id=\"room' + currentRow +'\">' + 
+		'<td>' + col1 + '</td>' +
+		'<td>' + col2 + '</td>' +
+		'<td>' + col3 + '</td>' + 
+		'<td>' + col4 + '</td>' +
+		'<td>' + col5 + '</td>' + '</tr>');
+	currentRow++;
+}
 
-		function delete_room(row_id) {
-			$('#room'+row_id).remove();
-		}
+function delete_room(row_id) {
+	$('#room'+row_id).remove();
+}
 
-		$(document).ready(function(){
-			currentRow = <?php echo count($rooms_code); ?>;
-			for (var i = currentRow; i < 5; i++) {
-				add_room();
-			}
-		});
+$(document).ready(function(){
+	currentRow = <?php echo count($rooms_amount); ?>;
+	for (var i = currentRow; i < 5; i++) {
+		add_room();
+	}
+});
 </script>
 
 <div class="container content">
@@ -89,37 +89,47 @@
 		<table id="rooms_div" class="table table-condensed">
 			<thead>
 				<tr>
-					<th>Room Code</th>
 					<th>Room Type</th>
 					<th>Comfort Level</th>
 					<th>Price</th>
+					<th>Amount</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<?php
-				for ($i = 0; $i < count($rooms_code); $i++) {
-					$room_code = $rooms_code[$i];
+				for ($i = 0; $i < count($rooms_amount); $i++) {
 					$room_type = $rooms_type[$i];
 					$room_comfort = $rooms_comfort[$i];
 					$room_price = $rooms_price[$i];
+					$room_amount = $rooms_amount[$i];
 					echo '<tr id="room'.$i.'">';
 
 					echo "<td>";
-					echo form_input('room_code[]', $room_code);
+					$options = array(
+						'single'  => 'Single',
+						'double'    => 'Double',
+						'triple'   => 'Triple',
+						);
+					echo form_dropdown('room_type[]', $options, $room_type);
 					echo "</td>";
 
 					echo "<td>";
-					echo form_input('room_type[]', $room_type);
-					echo "</td>";
-
-					echo "<td>";
-					echo form_input('room_comfort[]', $room_comfort);
+					$options = array(
+						'standard'  => 'Standard',
+						'luxury'    => 'Luxury',
+						'superior'   => 'Superior',
+						);
+					echo form_dropdown('room_comfort[]', $options, $room_comfort);
 					echo "</td>";
 
 					echo "<td>";
 					echo form_input('room_price[]', $room_price);
+					echo "</td>";
+
+					echo "<td>";
+					echo form_input('room_amount[]', $room_amount);
 					echo "</td>";
 
 					echo "<td>";
