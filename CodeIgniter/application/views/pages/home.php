@@ -6,8 +6,8 @@
       <img src="/img/hotel1.JPG">
       <div class="container">
         <div class="carousel-caption">
-          <h1>Example headline.</h1>
-          <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <h1>Book your next vacation.</h1>
+          <p class="lead">Simple hotel booking right at your fingertips.</p>
         </div>
       </div>
     </div>
@@ -15,8 +15,8 @@
       <img src="/img/hotel2.JPG">
       <div class="container">
         <div class="carousel-caption">
-          <h1>Another example headline.</h1>
-          <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <h1>Guaranteed lowest price.</h1>
+          <p class="lead">Our prices for hotels can't be beat. </p>
         </div>
       </div>
     </div>
@@ -24,8 +24,8 @@
       <img src="/img/hotel3.JPG">
       <div class="container">
         <div class="carousel-caption">
-          <h1>One more for good measure.</h1>
-          <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <h1>Reliable customer service.</h1>
+          <p class="lead">Available 24 hours a day, 7 days a week to help serve you.</p>
         </div>
       </div>
     </div>
