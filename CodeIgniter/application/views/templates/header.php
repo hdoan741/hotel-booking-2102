@@ -3,6 +3,7 @@
 	<title><?php echo $title ?> - Amazing Hotel</title>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="/css/daterangepicker.css">
   <link rel="stylesheet" type="text/css" href="/css/custom.css">
 </head>
 <body>
@@ -28,7 +29,7 @@
           </div><!--/.nav-collapse -->
           <div class="pull-right">
             <ul class="nav">
-              <?php if ($current_user) { ?>
+              <?php if (isset($current_user)) { ?>
                 <li class="user-name"><a href="#profile_link">My Profile</a></li>
                 <li class="user-name"><a href="/auth/logout">Logout</a></li>
               <?php } else { ?>

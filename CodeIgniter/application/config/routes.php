@@ -54,6 +54,7 @@ $route['features/create'] = "feature_controller/create_feature";
 $route['features/delete/(:any)'] = "feature_controller/delete_feature/$1";
 $route['select/(:any)'] = "hotels_controller/get_all_hotel_details/$1";
 $route['migrate'] = "migrate";
+$route['search'] = "pages/search";
 $route['test'] = "test/view";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
