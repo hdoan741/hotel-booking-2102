@@ -3,7 +3,7 @@
 <div id="myCarousel" class="carousel slide">
   <div class="carousel-inner">
     <div class="item active">
-      <img src="/img/hotel1.JPG">
+      <img src="/img/hotel3.JPG">
       <div class="container">
         <div class="carousel-caption">
           <h1>Book your next vacation.</h1>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="item">
-      <img src="/img/hotel3.JPG">
+      <img src="/img/hotel1.JPG">
       <div class="container">
         <div class="carousel-caption">
           <h1>Reliable customer service.</h1>
@@ -33,6 +33,7 @@
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
   <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div><!-- /.carousel -->
+
 <div class="search-form">
   <div class="search-header">
     <h1>Book your hotel</h1>

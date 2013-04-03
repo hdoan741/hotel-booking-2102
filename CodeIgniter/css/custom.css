@@ -268,3 +268,7 @@ body {
 .hotel_img_small {
   height: 100px;
 }
+
+.search-form .form-horizontal, .search-form .form-actions {
+  margin-bottom: 0;
+}
