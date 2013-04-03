@@ -38,23 +38,28 @@
     <h1>Book your hotel</h1>
   </div>
   <br/>
-  <form class="form-horizontal">
+  <form class="form-horizontal" action="/search">
     <div class="control-group">
       <label class="control-label">Location</label>
       <div class="controls">
-        <input type="text"></input>
+        <input type="text" name="location" value="Singapore"/>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">Number of Rooms</label>
       <div class="controls">
-        <input type="text"></input>
+        <input type="text" name="room_num" value="1"/>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label">Number People</label>
+      <label class="control-label" for="reservation">Reservation dates:</label>
       <div class="controls">
-        <input type="text"></input>
+        <div class="input-prepend">
+          <span class="add-on"><i class="icon-calendar"></i></span>
+          <input type="text" id="reservation">
+          <input type="hidden" name="start" id="booking_start">
+          <input type="hidden" name="end" id="booking_end">
+        </div>
       </div>
     </div>
     <div class="form-actions">
@@ -62,4 +67,3 @@
     </div>
   </form>
 </div>
-

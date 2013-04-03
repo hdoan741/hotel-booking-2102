@@ -48,29 +48,29 @@ class Hotel_manager extends CI_Model {
 	
 	function search($location, $start_date, $end_date, $num_room) {
 		$format = 'SELECT h.hotel_code FROM hotels h, rooms r'
-			. 'WHERE r.room_code NOT IN ('
-			.	'SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
-			.	'WHERE rb.booking_id = b.id'
-			.	'AND ('
-			.		'(b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-			.		'OR'
-			.		'(b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-			.		'OR'
-			.		'(b.start_date >= \'%s\' AND b.end_date <= \'%s\')'
-			.		'OR'
-			.		'(b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+			. ' WHERE r.room_code NOT IN ('
+			.	' SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
+			.	' WHERE rb.booking_id = b.id'
+			.	' AND ('
+			.		' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+			.		' OR'
+			.		' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+			.		' OR'
+			.		' (b.start_date >= \'%s\' AND b.end_date <= \'%s\')'
+			.		' OR'
+			.		' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
 			.	')'
 			. ')'
-			. 'AND h.hotel_code = r.hotel_code'
-			. 'AND h.location = \'%s\''
-			. 'GROUP BY h.hotel_code'
-			. 'HAVING COUNT(h.hotel_code) >= %s';
+			. ' AND h.hotel_code = r.hotel_code'
+			. ' AND h.location = \'%s\''
+			. ' GROUP BY h.hotel_code'
+			. ' HAVING COUNT(h.hotel_code) >= %s';
 		$sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, $start_date, $end_date, 
 				$start_date, $end_date, $location, $num_room);
-		$query = $this->db->query($sql);
 		$hotels = array();
+		$query = $this->db->query($sql);
 		foreach ($query->result_array() as $row) {
-			array_push($hotels, get_hotel($row['hotel_code']));
+			array_push($hotels, $this->get_hotel($row['hotel_code']));
 		}
 		return $hotels;
 	}
