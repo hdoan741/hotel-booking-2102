@@ -153,11 +153,13 @@ class Hotels_Controller extends CI_Controller {
 			$rooms_type = array();
 			$rooms_comfort = array();
 			$rooms_price = array();
-			foreach ($rooms as $row) {
-				array_push($rooms_code, $row->room_code);
-				array_push($rooms_type, $row->type);
-				array_push($rooms_comfort, $row->comfort_level);
-				array_push($rooms_price, $row->price);
+			if ($rooms <> NULL) {
+				foreach ($rooms as $row) {
+					array_push($rooms_code, $row->room_code);
+					array_push($rooms_type, $row->type);
+					array_push($rooms_comfort, $row->comfort_level);
+					array_push($rooms_price, $row->price);
+				}
 			}
 			$this->data['rooms_code'] = $rooms_code;
 			$this->data['rooms_type'] = $rooms_type;
