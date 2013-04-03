@@ -46,6 +46,21 @@ class Feature_Controller extends CI_Controller {
 
 	}
 
+	public function update_feature($feature_id) {
+	
+	}
+
+	public function delete_feature($feature_id) {
+		$feature = $this->Feature_manager->get_feature($feature_id);
+		$feature->delete();
+
+		$this->data['feature'] = $feature;
+		if ($feature != NULL) {
+			$this->load->view('templates/admin/header.php');
+			$this->load->view('features/delete_feature_result', $this->data);
+		}
+	}
+
 	public function _result() {
 		$feature_data = array('name' => $_POST['name'],
 							'description' => $_POST['description']);
