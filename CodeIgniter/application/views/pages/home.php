@@ -57,8 +57,8 @@
         <div class="input-prepend">
           <span class="add-on"><i class="icon-calendar"></i></span>
           <input type="text" id="reservation">
-          <input type="hidden" name="start" id="booking_start">
-          <input type="hidden" name="end" id="booking_end">
+          <input type="hidden" name="start_date" id="booking_start">
+          <input type="hidden" name="end_date" id="booking_end">
         </div>
       </div>
     </div>

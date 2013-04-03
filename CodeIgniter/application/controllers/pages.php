@@ -26,8 +26,8 @@ class Pages extends CI_Controller {
   public function search() {
     $location = isset($_GET['location']) ? $_GET['location'] : 'Singapore';
     $num_of_room = isset($_GET['room']) ? $_GET['room'] : 1;
-    $start_date = $_GET['start'];
-    $end_date = $_GET['end'];
+    $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : date('d/m/Y', strtotime("+1 day"));
+    $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : date('d/m/Y', strtotime("+2 days"));
 
 		$this->load->model('Hotel_manager');
     $available_hotels = $this->Hotel_manager->search($location, $start_date, $end_date, $num_of_room);

@@ -21,8 +21,8 @@
           <div class="input-prepend">
             <span class="add-on"><i class="icon-calendar"></i></span>
             <input type="text" id="reservation" value="<?php echo $start_date . ' - ' . $end_date ?>">
-            <input type="hidden" name="start" id="booking_start" value="<?php echo $start_date ?>">
-            <input type="hidden" name="end" id="booking_end" value="<?php echo $end_date ?>">
+            <input type="hidden" name="start_date" id="booking_start" value="<?php echo $start_date ?>">
+            <input type="hidden" name="end_date" id="booking_end" value="<?php echo $end_date ?>">
           </div>
         </div>
       </div>
@@ -39,14 +39,14 @@
       <th></th>
 			<th>Name</th>
 			<th>Location</th>
-      <th width="15%"></th>
+      <th width="10%"></th>
 		</tr>
 	<?php foreach ($hotels as $hotel):?>
 		<tr>
 			<td></td>
 			<td><?php echo $hotel->name ?></td>
 			<td><?php echo $hotel->location ?></td>
-			<td><a href="#" class="btn btn-primary">Book This Hotel</a></td>
+			<td><a href="#" class="btn btn-primary">Pick This Hotel</a></td>
 		</tr>
 	<?php endforeach;?>
 	</table>
