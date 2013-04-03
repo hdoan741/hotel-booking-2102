@@ -10,7 +10,6 @@
 			<th>Arrival Date</th>
 			<th>Departure Date</th>
 			<th>&nbsp;</th>
-			<th>&nbsp;</th>
 		</tr>
 	<?php foreach ($bookings as $booking):?>
 		<tr>
@@ -20,13 +19,8 @@
 			<td><?php echo $booking->num_child;?></td>
 			<td><?php echo $booking->start_date;?></td>
 			<td><?php echo $booking->end_date;?></td>
-			<td><i class="icon-pencil"></i></td>
-			<td><a href="/hotels/delete/<?php echo $feature->id; ?>"><i class="icon-trash"></i></a></td>
+			<td><a href="/hotels/delete/<?php echo $booking->id; ?>"><i class="icon-trash"></i></a></td>
 		</tr>
 	<?php endforeach;?>
 	</table>
-
-	<a href="create">
-		<button class='btn'>Add Booking</button>
-	</a>
 </div>
