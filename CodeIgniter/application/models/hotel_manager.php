@@ -61,7 +61,7 @@ class Hotel_manager extends CI_Model {
 			.		'(b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
 			.	')'
 			. ')'
-			. 'AND h.hotel_code = r.room_code'
+			. 'AND h.hotel_code = r.hotel_code'
 			. 'AND h.location = \'%s\''
 			. 'GROUP BY h.hotel_code'
 			. 'HAVING COUNT(h.hotel_code) >= %s';
