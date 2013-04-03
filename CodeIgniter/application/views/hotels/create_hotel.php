@@ -2,10 +2,13 @@
 		var currentRow = 0;
 
 		function add_room() {	
-			var col1 = '<input type=\"text\" name=\"room_code[]\" />';
-			var col2 = '<input type=\"text\" name=\"room_type[]\" />';
-			var col3 = '<input type=\"text\" name=\"room_comfort[]\" />';
-			var col4 = '<input type=\"text\" name=\"room_price[]\" />';
+			// var col1 = '<input type=\"text\" name=\"room_code[]\" />';
+			// var col2 = '<input type=\"text\" name=\"room_type[]\" />';
+			var col1 = '<select name=\"room_type[]\"><option value=\"single\" selected=\"selected\">Single</option><option value=\"double\">Double</option><option value=\"triple\">Triple</option></select>';  
+			// var col2 = '<input type=\"text\" name=\"room_comfort[]\" />';
+			var col2 = '<select name=\"room_comfort[]\"><option value=\"standard\" selected=\"selected\">Standard</option><option value=\"luxury\">Luxury</option><option value=\"superior\">Superior</option></select>';  
+			var col3 = '<input type=\"text\" name=\"room_price[]\" />';
+			var col4 = '<input type=\"text\" name=\"amount[]\" />';
 			var col5 = '<a onclick=\"delete_room(' + ('\'' + currentRow + '\'') + ')\"><i class="icon-trash"></i></a>';
 
 			$('#rooms_div > tbody:last').append('<tr id=\"room' + currentRow +'\">' + 
@@ -89,10 +92,11 @@
 		<table id="rooms_div" class="table table-condensed">
 			<thead>
 				<tr>
-					<th>Room Code</th>
+					<!-- <th>Room Code</th> -->
 					<th>Room Type</th>
 					<th>Comfort Level</th>
 					<th>Price</th>
+					<th>Amount</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
