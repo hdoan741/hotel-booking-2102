@@ -7,6 +7,9 @@ body {
   color: #5a5a5a;
   }
 
+.row {
+  padding-bottom:50px;
+}
 
 
   /* CUSTOMIZE THE NAVBAR
