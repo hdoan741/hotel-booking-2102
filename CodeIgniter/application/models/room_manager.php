@@ -107,13 +107,13 @@ class Room_manager extends CI_Model {
 		$query = $this->db->query('DELETE FROM rooms');
 	}
 
-	function  search($hotel_code, $start_date, $end_date) {
+	function search($hotel_code, $start_date, $end_date) {
                 $format = 'SELECT r.room_code FROM bookings b, rooms r, room_booking rb'
-                        + 'WHERE r.room_code = rb.room_code'
-                        + 'AND b.id = rb.booking_id'
-			+ 'AND r.hotel_code = \'%s\''
-                        + 'AND b.start_date > \'%s\''
-                        + 'AND b.end_date < \'%s\'';
+                        . 'WHERE r.room_code = rb.room_code'
+                        . 'AND b.id = rb.booking_id'
+			. 'AND r.hotel_code = \'%s\''
+                        . 'AND b.start_date > \'%s\''
+                        . 'AND b.end_date < \'%s\'';
                 $sql = sprintf($format, $hotel_code, $start_date, $end_date);
                 $query = $this->db->query($sql);
                 $rooms = array();
