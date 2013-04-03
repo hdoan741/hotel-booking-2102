@@ -35,10 +35,10 @@ class Hotel_manager extends CI_Model {
 	function get_all_hotel_details($hotel_code) {
 		$hotel = $this->get_hotel($hotel_code);
 		$features = $this->Hotel_Feature_Manager->get_features($hotel_code);
-		$rooms = $this->Room_manager->get_room(NULL, $hotel_code);
+		$rooms = $this->Room_manager->get_rooms_by_group($hotel_code);
 		$data = array('hotel' => $hotel,
 			'features' => $features,
-			'rooms' => $rooms);
+			'rooms' => $rooms );
 		return $data;
 	}
 

@@ -47,7 +47,34 @@ class Feature_Controller extends CI_Controller {
 	}
 
 	public function update_feature($feature_id) {
-	
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+
+		$feature = $this->Feature_manager->get_feature($feature_id);
+
+		if ($this->form_validation->run() == false) {
+			$this->data['name'] = array(
+				'name' => 'name',
+				'id' => 'name',
+				'value' => $feature->name,
+				'type' => 'text'
+			);
+			$this->data['description'] = array(
+				'name' => 'description',
+				'value' => $feature->description,
+				'id' => 'description',
+			);
+			$this->data['feature_submit'] = array(
+				'name' => 'feature_submit',
+				'id' => 'feature_submit',
+				'class' => 'btn',
+				'value' => 'Submit'
+			);
+			$this->load->view('templates/admin/header.php');
+			$this->load->view('features/update_feature', $this->data);
+		} else {
+			$this->_result();
+		}
 	}
 
 	public function delete_feature($feature_id) {

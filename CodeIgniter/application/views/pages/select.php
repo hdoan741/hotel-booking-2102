@@ -3,7 +3,7 @@
   <div class="row">
 
     <div class="span4">
-      <img src="http://blog.amsvans.com/wp-content/uploads/2010/11/hilton_hotel.jpg" />
+      <img src="<?php echo $hotel->image_url ?>" />
     </div>
 
     <div class="span8">
@@ -37,15 +37,16 @@
     <table class='table table-striped span8'>
       <tr>
         <th>Comfort Level</th>
-        <th>Number of Beds</th>
-        <th>Max Capacity</th>
+        <th>Type</th>
         <th>Price</th>
         <th>Amount</th>
       </tr>
       <?php foreach ($rooms as $room): ?>
       <tr>
-        <td><?php echo $room->name ?></td>
-        <td><?php echo $room->description ?></td>
+        <td><?php echo ucfirst($room['comfort_level']) ?></td>
+        <td><?php echo ucfirst($room['type']) ?></td>
+        <td><?php echo ucfirst($room['price']) ?></td>
+        <td><input type="text" /></td>
       </tr>
       <?php endforeach; ?>
     </table>
