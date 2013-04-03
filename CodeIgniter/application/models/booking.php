@@ -39,4 +39,9 @@ class Booking extends CI_Model {
 		}
 		$this->db->query($sql);
 	}
+
+	function delete() {
+		$sql = 'DELETE FROM bookings WHERE id='.$this->id;
+		$this->db->query($sql);
+	}
 }
