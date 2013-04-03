@@ -3,7 +3,9 @@ class Hotel_manager extends CI_Model {
 
 	function __construct() {
 		parent::__construct();
-		include APPPATH .'models/hotel.php';
+		$this->load->model('Hotel');
+		$this->load->model('Hotel_Feature_Manager');
+		$this->load->model('Room_manager');
 	}
 
 	function get_all_hotels() {
@@ -28,6 +30,16 @@ class Hotel_manager extends CI_Model {
 		} else {
 			return NULL;
 		}
+	}
+
+	function get_all_hotel_details($hotel_code) {
+		$hotel = $this->get_hotel($hotel_code);
+		$features = $this->Hotel_Feature_Manager->get_features($hotel_code);
+		$rooms = $this->Room_manager->get_room(NULL, $hotel_code);
+		$data = array('hotel' => $hotel,
+			'features' => $features,
+			'rooms' => $rooms);
+		return $data;
 	}
 
 	function delete_all_hotels() {
