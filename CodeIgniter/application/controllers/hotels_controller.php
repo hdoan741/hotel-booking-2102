@@ -187,6 +187,34 @@ class Hotels_Controller extends CI_Controller {
 					$hotel_feature->insert();
 				}
 
+
+				$this->Room_manager->delete_room(NULL, $hotel->hotel_code);
+
+				$rooms_code = $_POST['room_code'];
+				$rooms_type = $_POST['room_type'];
+				$rooms_comfort = $_POST['room_comfort'];
+				$rooms_price = $_POST['room_price'];
+
+				$n = count($rooms_code);
+				for ($i = 0; $i < $n; $i++) {
+					if ($rooms_code[$i] <> "") {
+						$room_code = $rooms_code[$i];
+						$hotel_code = $hotel->hotel_code;
+						$type = $rooms_type[$i];
+						$comfort_level = $rooms_comfort[$i];
+						$price = intval($rooms_price[$i]);
+
+						$room_data = array('room_code' => $room_code,
+							'type' => $type,
+							'comfort_level' => $comfort_level,
+							'price' => $price,
+							'hotel_code' => $hotel_code,
+							'max_capacity' => 0);
+						$room = new Room($room_data);
+						$room->save();
+					}
+				}
+
 				$this->load->view('templates/admin/header.php');
 				$this->load->view('hotels/update_hotel_result', $hotel_data);
 			}

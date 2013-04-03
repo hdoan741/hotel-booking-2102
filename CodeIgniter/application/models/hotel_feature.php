@@ -16,7 +16,6 @@ class Hotel_Feature extends CI_Model {
 			(feature_id, hotel_code) VALUES ('
 			. $this->feature_id  . ', \''
 			. $this->hotel_code . '\')';
-		echo $sql;
 		$this->db->query($sql);
 	}
 }
