@@ -8,7 +8,7 @@
 			// var col2 = '<input type=\"text\" name=\"room_comfort[]\" />';
 			var col2 = '<select name=\"room_comfort[]\"><option value=\"standard\" selected=\"selected\">Standard</option><option value=\"luxury\">Luxury</option><option value=\"superior\">Superior</option></select>';  
 			var col3 = '<input type=\"text\" name=\"room_price[]\" />';
-			var col4 = '<input type=\"text\" name=\"amount[]\" />';
+			var col4 = '<input type=\"text\" name=\"room_amount[]\" />';
 			var col5 = '<a onclick=\"delete_room(' + ('\'' + currentRow + '\'') + ')\"><i class="icon-trash"></i></a>';
 
 			$('#rooms_div > tbody:last').append('<tr id=\"room' + currentRow +'\">' + 

@@ -70,28 +70,31 @@ class Hotels_Controller extends CI_Controller {
 				}
 
 
-				$rooms_code = $_POST['room_code'];
+				// $rooms_code = $_POST['room_code'];
 				$rooms_type = $_POST['room_type'];
 				$rooms_comfort = $_POST['room_comfort'];
 				$rooms_price = $_POST['room_price'];
+				$rooms_amount = $_POST['room_amount'];
 
-				$n = count($rooms_code);
+				$n = count($rooms_amount);
 				for ($i = 0; $i < $n; $i++) {
-					if ($rooms_code[$i] <> "") {
-						$room_code = $rooms_code[$i];
-						$hotel_code = $hotel->hotel_code;
-						$type = $rooms_type[$i];
-						$comfort_level = $rooms_comfort[$i];
-						$price = intval($rooms_price[$i]);
+					if ($rooms_amount[$i] <> "") {
+						$m = intval($rooms_amount[$i]);
+						for ($j = 0; $j < $m; $j++) {
+							$hotel_code = $hotel->hotel_code;
+							$type = $rooms_type[$i];
+							$comfort_level = $rooms_comfort[$i];
+							$price = intval($rooms_price[$i]);
 
-						$room_data = array('room_code' => $room_code,
-							'type' => $type,
-							'comfort_level' => $comfort_level,
-							'price' => $price,
-							'hotel_code' => $hotel_code,
-							'max_capacity' => 0);
-						$room = new Room($room_data);
-						$room->save();
+							$room_data = array('room_code' => '0',
+								'type' => $type,
+								'comfort_level' => $comfort_level,
+								'price' => $price,
+								'hotel_code' => $hotel_code,
+								'max_capacity' => 0);
+							$room = new Room($room_data);
+							$room->save();
+						}
 					}
 				}
 
