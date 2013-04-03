@@ -2,10 +2,7 @@
 		var currentRow = 0;
 
 		function add_room() {	
-			// var col1 = '<input type=\"text\" name=\"room_code[]\" />';
-			// var col2 = '<input type=\"text\" name=\"room_type[]\" />';
 			var col1 = '<select name=\"room_type[]\"><option value=\"single\" selected=\"selected\">Single</option><option value=\"double\">Double</option><option value=\"triple\">Triple</option></select>';  
-			// var col2 = '<input type=\"text\" name=\"room_comfort[]\" />';
 			var col2 = '<select name=\"room_comfort[]\"><option value=\"standard\" selected=\"selected\">Standard</option><option value=\"luxury\">Luxury</option><option value=\"superior\">Superior</option></select>';  
 			var col3 = '<input type=\"text\" name=\"room_price[]\" />';
 			var col4 = '<input type=\"text\" name=\"room_amount[]\" />';

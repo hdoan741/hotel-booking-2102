@@ -151,23 +151,24 @@ class Hotels_Controller extends CI_Controller {
 				}
 			}
 
-			$rooms = $this->Room_manager->get_room(NULL, $hotel_code);
-			$rooms_code = array();
+			$rooms = $this->Room_manager->get_rooms_by_group($hotel_code);
 			$rooms_type = array();
 			$rooms_comfort = array();
 			$rooms_price = array();
+			$rooms_amount = array();
 			if ($rooms <> NULL) {
 				foreach ($rooms as $row) {
-					array_push($rooms_code, $row->room_code);
-					array_push($rooms_type, $row->type);
-					array_push($rooms_comfort, $row->comfort_level);
-					array_push($rooms_price, $row->price);
+					array_push($rooms_type, $row['type']);
+					array_push($rooms_comfort, $row['comfort_level']);
+					array_push($rooms_price, $row['price']);
+					array_push($rooms_amount, $row['amount']);
 				}
 			}
-			$this->data['rooms_code'] = $rooms_code;
+
 			$this->data['rooms_type'] = $rooms_type;
 			$this->data['rooms_comfort'] = $rooms_comfort;
 			$this->data['rooms_price'] = $rooms_price;
+			$this->data['rooms_amount'] = $rooms_amount;
 			
 			$this->load->view('templates/admin/header.php');
 			$this->load->view('hotels/update_hotel', $this->data);
@@ -193,28 +194,30 @@ class Hotels_Controller extends CI_Controller {
 
 				$this->Room_manager->delete_room(NULL, $hotel->hotel_code);
 
-				$rooms_code = $_POST['room_code'];
 				$rooms_type = $_POST['room_type'];
 				$rooms_comfort = $_POST['room_comfort'];
 				$rooms_price = $_POST['room_price'];
+				$rooms_amount = $_POST['room_amount'];
 
-				$n = count($rooms_code);
+				$n = count($rooms_amount);
 				for ($i = 0; $i < $n; $i++) {
-					if ($rooms_code[$i] <> "") {
-						$room_code = $rooms_code[$i];
-						$hotel_code = $hotel->hotel_code;
-						$type = $rooms_type[$i];
-						$comfort_level = $rooms_comfort[$i];
-						$price = intval($rooms_price[$i]);
+					if ($rooms_amount[$i] <> "") {
+						$m = intval($rooms_amount[$i]);
+						for ($j = 0; $j < $m; $j++) {
+							$hotel_code = $hotel->hotel_code;
+							$type = $rooms_type[$i];
+							$comfort_level = $rooms_comfort[$i];
+							$price = intval($rooms_price[$i]);
 
-						$room_data = array('room_code' => $room_code,
-							'type' => $type,
-							'comfort_level' => $comfort_level,
-							'price' => $price,
-							'hotel_code' => $hotel_code,
-							'max_capacity' => 0);
-						$room = new Room($room_data);
-						$room->save();
+							$room_data = array('room_code' => '0',
+								'type' => $type,
+								'comfort_level' => $comfort_level,
+								'price' => $price,
+								'hotel_code' => $hotel_code,
+								'max_capacity' => 0);
+							$room = new Room($room_data);
+							$room->save();
+						}
 					}
 				}
 

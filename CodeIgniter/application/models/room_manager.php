@@ -28,6 +28,25 @@ class Room_manager extends CI_Model {
 	}
 	*/
 
+	function get_rooms_by_group($hotel_code) {
+		$format = '	SELECT *, COUNT(*) AS amount FROM rooms
+					WHERE hotel_code = \'%s\'
+					GROUP BY type, comfort_level, price';
+		$sql = sprintf($format, $hotel_code);
+		$query = $this->db->query($sql);
+		$result_array = array();
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $row) {
+				$data = array('type' => $row->type,
+					'comfort_level' => $row->comfort_level,
+					'price' => $row->price,
+					'amount' => $row->amount);
+				array_push($result_array, $data);
+			}
+		} 
+		return $result_array;
+	}
+
 	function get_room($room_code=NULL, $hotel_code=NULL) {
 		$sql;
 		if ($room_code === NULL && $hotel_code === NULL) {
