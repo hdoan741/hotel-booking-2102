@@ -1,6 +1,3 @@
-<?php var_dump($hotel)?>
-<?php var_dump($features)?>
-<?php var_dump($rooms)?>
 <div class="container content">
   
   <div class="row">
