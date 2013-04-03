@@ -1,5 +1,6 @@
-<!-- Carousel
-================================================== -->
+<?php var_dump($hotel)?>
+<?php var_dump($features)?>
+<?php var_dump($rooms)?>
 <div class="container content">
   
   <div class="row">
@@ -9,8 +10,8 @@
     </div>
 
     <div class="span8">
-      <h1>Hilton Hotel Singapore [hotel name]</h1>
-      <h3>Singapore [location]</h3>
+      <h1><?php echo $hotel->name ?></h1>
+      <h3><?php echo $hotel->location ?></h3>
     </div>
     
   </div>
@@ -18,23 +19,18 @@
   <div class='row'>
     <h2 class="span4">Hotel Features</h2>
 
+
     <table class='table table-striped span8'>
       <tr>
         <th>Feature Name</th>
         <th>Feature Description</th>
       </tr>
+      <?php foreach ($features as $feature): ?>
       <tr>
-        <td>Pool</td>
-        <td>sdfsadfsa</td>
+        <td><?php echo $feature->name ?></td>
+        <td><?php echo $feature->description ?></td>
       </tr>
-      <tr>
-        <td>Pool</td>
-        <td>sdfsadfsa</td>
-      </tr>
-      <tr>
-        <td>Pool</td>
-        <td>sdfsadfsa</td>
-      </tr>
+      <?php endforeach; ?>
     </table>
   </div>
 
@@ -49,27 +45,12 @@
         <th>Price</th>
         <th>Amount</th>
       </tr>
+      <?php foreach ($rooms as $room): ?>
       <tr>
-        <td>Deluxe</td>
-        <td>2</td>
-        <td>4</td>
-        <td>$129</td>
-        <td><input type="text" /></td>
+        <td><?php echo $room->name ?></td>
+        <td><?php echo $room->description ?></td>
       </tr>
-      <tr>
-        <td>Deluxe</td>
-        <td>2</td>
-        <td>4</td>
-        <td>$129</td>
-        <td><input type="text" /></td>
-      </tr>
-      <tr>
-        <td>Superior</td>
-        <td>2</td>
-        <td>4</td>
-        <td>$129</td>
-        <td><input type="text" /></td>
-      </tr>
+      <?php endforeach; ?>
     </table>
   </div>
 
