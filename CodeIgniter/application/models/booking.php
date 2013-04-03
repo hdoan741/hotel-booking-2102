@@ -11,7 +11,7 @@ class Booking extends CI_Model {
 	function __construct($attr=NULL) {
 		parent::__construct();
 		if($attr == NULL) return;
-		$this->id = $attr['id'];
+		if(array_key_exists('id', $attr)) $this->id = $attr['id'];
 		$this->start_date = $attr['start_date'];
 		$this->end_date = $attr['end_date'];
 		$this->customer = $attr['customer'];
