@@ -22,7 +22,6 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#hotels">Our Hotels</a></li>
               <li><a href="/about">About Us</a></li>
               <li><a href="#contact">Contact Us</a></li>
             </ul>
