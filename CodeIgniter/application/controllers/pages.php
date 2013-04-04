@@ -43,4 +43,10 @@ class Pages extends CI_Controller {
 		$this->load->view('pages/search', $this->data);
 		$this->load->view('templates/footer.php', $this->data);
   }
+
+  public function payment() {
+		$this->load->view('templates/header.php');
+		$this->load->view('pages/payment');
+		$this->load->view('templates/footer.php');
+  }
 }

@@ -52,6 +52,6 @@
     </table>
   </div>
 
-  <button class="btn">Book Now</button>
+  <a href="/payment"><button class="btn">Book Now</button></a>
 
 </div>
