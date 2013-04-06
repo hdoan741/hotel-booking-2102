@@ -34,6 +34,7 @@
   <div class="row">
     <h2 class="span4">Room Types</h2>
 
+<?php echo form_open('/payment/'.$hotel->hotel_code, array('class'=>'form-horizontal')) ?>
     <table class='table table-striped span8'>
       <tr>
         <th>Comfort Level</th>
@@ -54,6 +55,7 @@
     </table>
   </div>
 
-  <a href=<?php echo "/payment/".$hotel->hotel_code ?>><button class="btn">Book Now</button></a>
+<?php echo form_submit('submit', 'Book Now'); ?>
+<?php echo form_close(); ?>
 
 </div>

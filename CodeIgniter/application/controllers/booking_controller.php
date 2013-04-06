@@ -2,6 +2,8 @@
 
 class Booking_Controller extends CI_Controller {
 
+	public $bookings_info = null;	
+
 	function __construct()
 	{
 		parent::__construct();
@@ -82,22 +84,67 @@ class Booking_Controller extends CI_Controller {
 		$start_date = $this->session->userdata('start_date');
 		$end_date = $this->session->userdata('end_date');
 		$rooms = $this->Room_manager->get_available_rooms_all_groups($hotel_code, $start_date, $end_date);
-		$this->bookings = array();
+		$this->bookings_info = array(
+			'hotel_code' => $hotel_code,
+			'start_date' => $start_date,
+			'end_date' => $end_date,
+			'data' => array(),
+		);
 		$total = 0;
 		$amount = $_POST['amount'];
-		echo serialize($amount);
 		for($i=0; $i<count($rooms); $i++) {
 			$data = array(
-				'start_date' => $start_date,
-				'end_date' => $end_date,
 				'room' => $rooms[$i],
 				'amount' => $amount[$i],
 			);
-			array_push($this->bookings, $data);
+			array_push($this->bookings_info['data'], $data);
 			$total += $rooms[$i]['price'] * $data['amount'];
 		}
+		$this->session->set_userdata('bookings_info', $this->bookings_info);
 		$this->load->view('templates/header.php');
 		$this->load->view('pages/payment', array('total'=>$total));
+		$this->load->view('templates/footer.php');
+	}
+
+	function complete() {
+		$this->load->model('Booking_manager');
+		$this->load->model('Room_manager');
+		$this->load->model('Room_booking_manager');
+		$this->load->model('Booking');
+		$this->load->model('Room_booking');
+		
+		$this->bookings_info = $this->session->userdata('bookings_info');
+		echo json_encode($this->bookings_info);
+		$hotel_code = $this->bookings_info['hotel_code'];
+		$start_date = $this->bookings_info['start_date'];
+		$end_date = $this->bookings_info['end_date'];
+		$booking = new Booking(array(
+			'start_date' => $start_date,
+			'end_date' => $end_date,
+			'customer' => $this->session->userdata('user_id'),
+			'num_child' => 0,
+			'num_adult' => 0,
+		));
+		$booking->save();
+
+		foreach($this->bookings_info['data'] as $booking_data) {
+		$type = $booking_data['room']['type'];
+			$comfort_level = $booking_data['room']['comfort_level'];
+			$price = $booking_data['room']['price'];
+			$rooms = $this->Room_manager->get_available_rooms_all_groups($hotel_code, $start_date, $end_date, $type, $comfort_level, $price);
+			for($i=0; $i<$booking_data['amount']; $i++) {
+				$room = $rooms[$i];
+				$room_booking = new Room_booking(array(
+					'room_code' => $room['room_code'],
+					'hotel_code' => $room['hotel_code'],
+					'booking_id' => $booking->id,
+				));
+				$room_booking->save();
+			}
+		}	
+
+		$this->load->view('templates/header.php');
+		$this->load->view('pages/complete');
 		$this->load->view('templates/footer.php');
 	}
 }	

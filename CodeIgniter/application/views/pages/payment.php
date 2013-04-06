@@ -1,7 +1,10 @@
 <div class="container content">
   <h1 class="page-header">Complete Payment</h1>
+	
+  <div>
+	<h2>Total Amount: $<?php echo $total ?></h2>
+  </div>
 
-  <h2 class="span4">Total Amount: $<?php echo $total ?></h2></br>
   <div class="form-horizontal">
     <div class="control-group">
       <label class="control-label">Card Number</label>

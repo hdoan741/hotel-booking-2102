@@ -58,6 +58,7 @@ $route['migrate'] = "migrate";
 $route['search'] = "pages/search";
 $route['test'] = "test/view";
 $route['payment/(:any)'] = "booking_controller/payment/$1";
+$route['complete'] = "booking_controller/complete";
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 
