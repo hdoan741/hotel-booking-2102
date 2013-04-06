@@ -13,6 +13,12 @@ class Hotels_Controller extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
+
+		$type_options = array('single', 'double', 'triple');
+		$comfort_options = array('standard', 'luxury', 'superior');
+		
+		$this->data['type_options'] = $type_options;
+		$this->data['comfort_options'] = $comfort_options;
 	}
 
 	public function create_hotel() {
