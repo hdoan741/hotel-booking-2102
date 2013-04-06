@@ -27,7 +27,6 @@ class Booking extends CI_Model {
                                 . $this->customer . '\', '
                                 . $this->num_child . ', '
                                 . $this->num_adult . ')';
-			echo $sql;
                 } else {
                         $sql = 'UPDATE users SET '
                                 . 'start_date=\'' . $this->start_date . '\', '
@@ -39,7 +38,6 @@ class Booking extends CI_Model {
 		}
 		$this->db->query($sql);
 		$this->id = $this->db->query("SELECT MAX(id) AS id  FROM bookings")->row()->id;
-		echo $this->id.'AAAAA';
 	}
 
 	function delete() {

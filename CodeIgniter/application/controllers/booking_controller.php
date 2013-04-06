@@ -114,7 +114,6 @@ class Booking_Controller extends CI_Controller {
 		$this->load->model('Room_booking');
 		
 		$this->bookings_info = $this->session->userdata('bookings_info');
-		echo json_encode($this->bookings_info);
 		$hotel_code = $this->bookings_info['hotel_code'];
 		$start_date = $this->bookings_info['start_date'];
 		$end_date = $this->bookings_info['end_date'];
