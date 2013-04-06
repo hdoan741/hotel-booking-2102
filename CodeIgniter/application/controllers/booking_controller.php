@@ -67,18 +67,7 @@ class Booking_Controller extends CI_Controller {
 			$this->load->view('booking/create_booking', $this->data);
 		} else {
 			redirect('booking/hotel_list', 'refresh');
-/*			$this->load->model('Bookingmanager');
-			$attr = array(
-				'start_date' => $this->input->post('start_date'),
-				'end_date' => $this->input->post('end_date'),
-				'customer' => 'aaa',
-				'num_child' => (int)$this->input->post('num_child'),
-				'num_adult' => (int)$this->input->post('num_adult'),
-			);
-			echo serialize($attr);
-			$booking = $this->Bookingmanager->new_booking($attr);
-			$booking->save();
-*/		}	
+		}	
 	}
 
 	function booking_list() {
@@ -86,5 +75,24 @@ class Booking_Controller extends CI_Controller {
 		$this->data['bookings'] = $this->Booking_manager->get_all_bookings();
 		$this->load->view('templates/admin/header.php');
 		$this->load->view('booking/booking_list', $this->data);
+	}
+
+	function payment($hotel_code) {
+		$this->load->model('Room_manager');
+		$rooms = $this->Room_manager->get_rooms_by_group($hotel_code);
+		$booking_data = array();
+		foreach($rooms as $room) {
+			$data = array(
+				'start_date' => $_GET['start_date'];
+				'end_date' => $_GET['end_date'];
+				'room' => $room,
+				'quantity' => $_POST['room_'.$room_code];
+			);
+			array_push($booking_data, $data);
+		}
+		$this->load->view('templates/header.php');
+		$this->load->view('pages/payment', $booking_data);
+		$this->load->view('templates/footer.php');
+		echo 'AAA'.serialize($booking_data);
 	}
 }	

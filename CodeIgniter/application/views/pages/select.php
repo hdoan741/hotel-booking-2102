@@ -46,12 +46,12 @@
         <td><?php echo ucfirst($room['comfort_level']) ?></td>
         <td><?php echo ucfirst($room['type']) ?></td>
         <td><?php echo ucfirst($room['price']) ?></td>
-        <td><input type="text" /></td>
+        <td><input type="text" name=<?php echo "room_".$room['room_code'] ?>></td>
       </tr>
       <?php endforeach; ?>
     </table>
   </div>
 
-  <a href="/payment"><button class="btn">Book Now</button></a>
+  <a href=<?php echo "/payment/".$hotel->hotel_code ?>><button class="btn">Book Now</button></a>
 
 </div>
