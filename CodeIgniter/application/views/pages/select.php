@@ -39,6 +39,7 @@
         <th>Comfort Level</th>
         <th>Type</th>
         <th>Price</th>
+	<th>Availble No.</th>
         <th>Amount</th>
       </tr>
       <?php foreach ($rooms as $room): ?>
@@ -46,7 +47,8 @@
         <td><?php echo ucfirst($room['comfort_level']) ?></td>
         <td><?php echo ucfirst($room['type']) ?></td>
         <td><?php echo ucfirst($room['price']) ?></td>
-        <td><input type="text" name=<?php echo "room_".$room['room_code'] ?>></td>
+	<td><?php echo ucfirst($room['available_no']) ?></td>
+        <td><input type="text" name="amount[]" ?></td>
       </tr>
       <?php endforeach; ?>
     </table>
