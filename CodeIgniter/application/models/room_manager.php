@@ -37,7 +37,7 @@ class Room_manager extends CI_Model {
 		$result_array = array();
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
-				$data = array(
+				$data = array('room_code' => $row->room_code,
 					'type' => $row->type,
 					'comfort_level' => $row->comfort_level,
 					'price' => $row->price,
