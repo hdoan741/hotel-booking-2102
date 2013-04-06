@@ -79,22 +79,25 @@ class Booking_Controller extends CI_Controller {
 
 	function payment($hotel_code) {
 		$this->load->model('Room_manager');
-		$rooms = $this->Room_manager->get_available_rooms_all_group($hotel_code);
+		$start_date = $this->session->userdata('start_date');
+		$end_date = $this->session->userdata('end_date');
+		$rooms = $this->Room_manager->get_available_rooms_all_groups($hotel_code, $start_date, $end_date);
 		$this->bookings = array();
 		$total = 0;
-		for($i=0; i<count($rooms); i++) {
+		$amount = $_POST['amount'];
+		echo serialize($amount);
+		for($i=0; $i<count($rooms); $i++) {
 			$data = array(
-				'start_date' => $_GET['start_date'];
-				'end_date' => $_GET['end_date'];
-				'room' => $rooms[i],
-				'amount' => $_POST($amount[i]);
+				'start_date' => $start_date,
+				'end_date' => $end_date,
+				'room' => $rooms[$i],
+				'amount' => $amount[$i],
 			);
 			array_push($this->bookings, $data);
-			$total += $rooms[i]['price'] * $data['amount'];
+			$total += $rooms[$i]['price'] * $data['amount'];
 		}
 		$this->load->view('templates/header.php');
-		$this->load->view('pages/payment', $total);
+		$this->load->view('pages/payment', array('total'=>$total));
 		$this->load->view('templates/footer.php');
-		echo 'AAA'.serialize($this->booking_data);
 	}
 }	

@@ -263,7 +263,7 @@ class Hotels_Controller extends CI_Controller {
 	}
 
 	public function get_all_hotel_details($hotel_code) {
-		$this->data = $this->Hotel_manager->get_all_hotel_details($hotel_code);
+		$this->data = $this->Hotel_manager->get_all_hotel_available_details($hotel_code);
 
 		$this->load->view('templates/admin/header.php');
 		$this->load->view('pages/select', $this->data);

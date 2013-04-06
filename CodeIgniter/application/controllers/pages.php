@@ -2,6 +2,11 @@
 
 class Pages extends CI_Controller {
 	
+	function __contruct() {
+		parent::__construct();
+	 	$this->load->library('session');
+	}
+
 	public function view($page = 'home') {
 		if ( ! file_exists('application/views/pages/'.$page.'.php'))
 		{
@@ -28,6 +33,8 @@ class Pages extends CI_Controller {
     $num_of_room = isset($_GET['room']) ? $_GET['room'] : 1;
     $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : date('d/m/Y', strtotime("+1 day"));
     $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : date('d/m/Y', strtotime("+2 days"));
+    $this->session->set_userdata('start_date', $start_date);
+    $this->session->set_userdata('end_date', $end_date);
 
 		$this->load->model('Hotel_manager');
     $available_hotels = $this->Hotel_manager->search($location, $start_date, $end_date, $num_of_room);

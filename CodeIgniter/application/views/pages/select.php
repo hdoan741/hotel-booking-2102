@@ -48,7 +48,7 @@
         <td><?php echo ucfirst($room['type']) ?></td>
         <td><?php echo ucfirst($room['price']) ?></td>
 	<td><?php echo ucfirst($room['available_no']) ?></td>
-        <td><input type="text" name="amount[]" ?></td>
+        <td><input type="text" name="amount[]" ></td>
       </tr>
       <?php endforeach; ?>
     </table>

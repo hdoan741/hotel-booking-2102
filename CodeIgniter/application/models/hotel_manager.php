@@ -30,6 +30,16 @@ class Hotel_manager extends CI_Model {
 		} else {
 			return NULL;
 		}
+	}	
+
+	function get_all_hotel_available_details($hotel_code) {
+		$hotel = $this->get_hotel($hotel_code);
+		$features = $this->Hotel_Feature_Manager->get_features($hotel_code);
+		$rooms = $this->Room_manager->get_available_rooms_all_groups($hotel_code, $this->session->userdata('start_date'), $this->session->userdata('end_date'));
+		$data = array('hotel' => $hotel,
+			'features' => $features,
+			'rooms' => $rooms );
+		return $data;
 	}
 
 	function get_all_hotel_details($hotel_code) {
