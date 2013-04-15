@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title><?php echo $title ?> - Amazing Hotel</title>
+	<title>Amazing Hotel</title>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css">
   <link rel="stylesheet" type="text/css" href="/css/custom.css">
@@ -28,6 +28,11 @@
               <li><a href="/booking/list">Bookings</a></li>
             </ul>
           </div><!--/.nav-collapse -->
+          <div class="pull-right">
+            <ul class="nav">
+                <li class="user-name"><a href="/auth/logout">Logout</a></li>
+            </ul>
+          </div> 
         </div><!-- /.navbar-inner -->
       </div><!-- /.navbar -->
     </div> <!-- /.container -->

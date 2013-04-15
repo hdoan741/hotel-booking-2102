@@ -20,10 +20,13 @@ class Pages extends CI_Controller {
 		$this->load->model('Hotel_Feature_Manager');
 
 		$data['title'] = ucfirst($page); // Capitalize the first letter
-		$data['user'] = 'aa'; //$this->User_manager->get_user(1)->first_name;
-    		$data['current_user'] = $this->ion_auth->user()->row();
 
- 		$this->load->view('templates/header', $data);
+ 		if (!$this->ion_auth->is_admin()) {
+			$this->load->view('templates/header', $data);
+		} else {
+			$this->load->view('templates/admin/header');
+		}
+
 		$this->load->view('pages/'.$page, $data);
 		$this->load->view('templates/footer', $data);
 	}

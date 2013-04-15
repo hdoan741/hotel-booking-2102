@@ -29,8 +29,7 @@
           </div><!--/.nav-collapse -->
           <div class="pull-right">
             <ul class="nav">
-              <?php if (isset($current_user)) { ?>
-                <li class="user-name"><a href="#profile_link">My Profile</a></li>
+              <?php if ($this->ion_auth->logged_in()) { ?>
                 <li class="user-name"><a href="/auth/logout">Logout</a></li>
               <?php } else { ?>
                 <li><a href="/auth/create_user">Register</a></li>
