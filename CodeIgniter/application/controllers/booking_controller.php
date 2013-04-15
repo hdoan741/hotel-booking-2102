@@ -115,8 +115,8 @@ class Booking_Controller extends CI_Controller {
 		
 		$this->bookings_info = $this->session->userdata('bookings_info');
 		$hotel_code = $this->bookings_info['hotel_code'];
-		$start_date = $this->bookings_info['start_date'];
-		$end_date = $this->bookings_info['end_date'];
+		$start_date = date_create_from_format('d/m/Y', $this->bookings_info['start_date'])->format('Y-m-d');
+		$end_date = date_create_from_format('d/m/Y', $this->bookings_info['end_date'])->format('Y-m-d');
 		$booking = new Booking(array(
 			'start_date' => $start_date,
 			'end_date' => $end_date,
@@ -131,7 +131,9 @@ class Booking_Controller extends CI_Controller {
 			$comfort_level = $booking_data['room']['comfort_level'];
 			$price = $booking_data['room']['price'];
 			$rooms = $this->Room_manager->get_available_rooms_all_groups($hotel_code, $start_date, $end_date, $type, $comfort_level, $price);
-			for($i=0; $i<$booking_data['amount']; $i++) {
+		echo 'amount: '.$booking_data['amount'];
+		echo json_encode($rooms);	
+		for($i=0; $i<$booking_data['amount']; $i++) {
 				$room = $rooms[$i];
 				$room_booking = new Room_booking(array(
 					'room_code' => $room['room_code'],

@@ -129,7 +129,7 @@ class Room_manager extends CI_Model {
          $sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, 
 			$start_date, $end_date, $start_date, $end_date, $hotel_code);
 		$query = $this->db->query($sql);
-
+echo $sql;
 		$result_array = array();
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
