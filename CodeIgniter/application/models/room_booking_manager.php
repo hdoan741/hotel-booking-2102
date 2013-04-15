@@ -35,7 +35,7 @@ class Room_booking_manager extends CI_Model {
 			$flag = FALSE;
 			
 			if ($room_code <> NULL) {
-				$format = ' room_code = \'%s\'';
+				$format = ' room_code = %d';
 				$clause = sprintf($format, $room_code);
 				if ($flag) {
 					$sql = $sql.' AND'.$clause;
@@ -56,7 +56,7 @@ class Room_booking_manager extends CI_Model {
 			}
 
 			if ($booking_id <> NULL) {
-				$format = ' booking_id = \'%s\'';
+				$format = ' booking_id = %d';
 				$clause = sprintf($format, $booking_id);
 				if ($flag) {
 					$sql = $sql.' AND'.$clause;
