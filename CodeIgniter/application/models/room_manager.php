@@ -86,31 +86,8 @@ class Room_manager extends CI_Model {
 		return $result_array;
 	}
 
-	function get_available_rooms_all_groups($hotel_code, $start_date, $end_date) {
-		/*
-		$format = 'CREATE VIEW rooms_view AS'
-						. '(SELECT * FROM rooms r'.
-                        . ' WHERE r.room_code NOT IN ('
-                        .       ' SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
-                        .       ' WHERE rb.booking_id = b.id'
-                        .       ' AND ('
-                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-                        .               ' OR'
-                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-                        .               ' OR'
-                        .               ' (b.start_date >= \'%s\' AND b.end_date <= \'%s\')'
-                        .               ' OR'
-                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
-                        .       ' )'
-                        . ' )'
-                        . ' AND r.hotel_code = \'%s\''
-                        .');'
-				.  'SELECT *, COUNT(*) AS available_no FROM rooms_view
-					WHERE hotel_code = \'%s\'
-					GROUP BY type, comfort_level, price';
-        $sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, 
-			$start_date, $end_date, $start_date, $end_date, $hotel_code, $hotel_code);*/
- 		$format = 'SELECT *, COUNT(*) AS available_no FROM rooms r'
+	function get_available_count_all_groups($hotel_code, $start_date, $end_date) {
+ 		$format = 'SELECT COUNT(*) AS available_no FROM rooms r'
                         . ' WHERE r.room_code NOT IN ('
                         .       ' SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
                         .       ' WHERE rb.booking_id = b.id'
@@ -126,6 +103,41 @@ class Room_manager extends CI_Model {
                         . ' )'
                         . ' AND r.hotel_code = \'%s\''
                         . ' GROUP BY type, comfort_level, price';
+         $sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, 
+			$start_date, $end_date, $start_date, $end_date, $hotel_code);
+		$query = $this->db->query($sql);
+echo $sql;
+		$result_array = array();
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $row) {
+				$data = array('room_code' => $row->room_code,
+					'hotel_code' => $row->hotel_code,
+					'type' => $row->type,
+					'comfort_level' => $row->comfort_level,
+					'price' => $row->price,
+					'available_no' => $row->available_no);
+				array_push($result_array, $data);
+			}
+		} 
+		return $result_array;
+	}
+
+	function get_available_rooms_all_groups($hotel_code, $start_date, $end_date) {
+		$format = 'SELECT * FROM rooms r'
+                        . ' WHERE r.room_code NOT IN ('
+                        .       ' SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
+                        .       ' WHERE rb.booking_id = b.id'
+                        .       ' AND ('
+                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+                        .               ' OR'
+                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+                        .               ' OR'
+                        .               ' (b.start_date >= \'%s\' AND b.end_date <= \'%s\')'
+                        .               ' OR'
+                        .               ' (b.start_date <= \'%s\' AND b.end_date >= \'%s\')'
+                        .       ' )'
+                        . ' )'
+                        . ' AND r.hotel_code = \'%s\'';
          $sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, 
 			$start_date, $end_date, $start_date, $end_date, $hotel_code);
 		$query = $this->db->query($sql);
