@@ -10,6 +10,7 @@ class Booking_Controller extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
+		$this->load->model('Booking_manager');
 	}
 
 	function create_booking() {
@@ -155,5 +156,22 @@ class Booking_Controller extends CI_Controller {
 		$this->load->view('templates/header.php');
 		$this->load->view('pages/complete');
 		$this->load->view('templates/footer.php');
+	}
+
+	function delete_booking($booking_id) {
+		$booking = $this->Booking_manager->get_booking($booking_id);
+		$booking->delete();
+
+		$this->data['booking'] = $booking;
+		if ($booking != NULL) {
+			$this->load->view('templates/admin/header.php');
+			$this->load->view('booking/delete_booking_result', $this->data);
+		}
+	}
+
+	function update_booking($booking_id) {
+		$this->data['booking_id'] = $booking_id;
+		$this->load->view('templates/admin/header.php');
+		$this->load->view('booking/update_booking_result.php', $this->data);
 	}
 }	
