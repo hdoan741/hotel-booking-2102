@@ -3,8 +3,8 @@
 	<title>Amazing Hotel</title>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="/css/daterangepicker.css">
   <link rel="stylesheet" type="text/css" href="/css/custom.css">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 </head>
 <body>
   <div class="navbar-wrapper">
