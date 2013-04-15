@@ -83,7 +83,6 @@ class Booking_Controller extends CI_Controller {
 		$this->load->model('Room_manager');
 		$start_date = $this->session->userdata('start_date');
 		$end_date = $this->session->userdata('end_date');
-		$rooms = $this->Room_manager->get_available_rooms_all_groups($hotel_code, $start_date, $end_date);
 		$this->bookings_info = array(
 			'hotel_code' => $hotel_code,
 			'start_date' => $start_date,
@@ -92,17 +91,28 @@ class Booking_Controller extends CI_Controller {
 		);
 		$total = 0;
 		$amount = $_POST['amount'];
-		for($i=0; $i<count($rooms); $i++) {
-			$data = array(
-				'room' => $rooms[$i],
-				'amount' => $amount[$i],
-			);
-			array_push($this->bookings_info['data'], $data);
-			$total += $rooms[$i]['price'] * $data['amount'];
+		$comfort_level = $_POST['comfort'];
+		$type = $_POST['type'];
+		$price = $_POST['price'];
+		for($i=0; $i<count($amount); $i++) {
+			if ($amount[$i] != "0") {
+				$data = array(
+					'amount' => $amount[$i],
+					'comfort_level' => $comfort_level[$i],
+					'type' => $type[$i],
+					'price' => $price[$i]
+				);
+				array_push($this->bookings_info['data'], $data);
+				$total += $price[$i] * $data['amount'];
+			}
 		}
+		$view_data['start_date'] = $start_date;
+		$view_data['end_date'] = $end_date;
+		$view_data['total'] = $total;
+		$view_data['rooms'] = $this->bookings_info['data'];
 		$this->session->set_userdata('bookings_info', $this->bookings_info);
 		$this->load->view('templates/header.php');
-		$this->load->view('pages/payment', array('total'=>$total));
+		$this->load->view('pages/payment', $view_data);
 		$this->load->view('templates/footer.php');
 	}
 
@@ -127,12 +137,10 @@ class Booking_Controller extends CI_Controller {
 		$booking->save();
 
 		foreach($this->bookings_info['data'] as $booking_data) {
-		$type = $booking_data['room']['type'];
-			$comfort_level = $booking_data['room']['comfort_level'];
-			$price = $booking_data['room']['price'];
-			$rooms = $this->Room_manager->get_available_rooms_all_groups($hotel_code, $start_date, $end_date, $type, $comfort_level, $price);
-		echo 'amount: '.$booking_data['amount'];
-		echo json_encode($rooms);	
+			$comfort_level = $booking_data['comfort_level'];
+			$type= $booking_data['type'];
+			$price = $booking_data['price'];
+			$rooms = $this->Room_manager->get_available_rooms_by_group($hotel_code, $start_date, $end_date, $type, $comfort_level, $price);
 		for($i=0; $i<$booking_data['amount']; $i++) {
 				$room = $rooms[$i];
 				$room_booking = new Room_booking(array(

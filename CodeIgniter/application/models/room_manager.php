@@ -87,7 +87,7 @@ class Room_manager extends CI_Model {
 	}
 
 	function get_available_count_all_groups($hotel_code, $start_date, $end_date) {
- 		$format = 'SELECT COUNT(*) AS available_no FROM rooms r'
+ 		$format = 'SELECT *, COUNT(*) AS available_no FROM rooms r'
                         . ' WHERE r.room_code NOT IN ('
                         .       ' SELECT DISTINCT rb.room_code FROM room_booking rb, bookings b'
                         .       ' WHERE rb.booking_id = b.id'
@@ -106,7 +106,6 @@ class Room_manager extends CI_Model {
          $sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, 
 			$start_date, $end_date, $start_date, $end_date, $hotel_code);
 		$query = $this->db->query($sql);
-echo $sql;
 		$result_array = array();
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
@@ -141,7 +140,6 @@ echo $sql;
          $sql = sprintf($format, $end_date, $end_date, $start_date, $start_date, 
 			$start_date, $end_date, $start_date, $end_date, $hotel_code);
 		$query = $this->db->query($sql);
-echo $sql;
 		$result_array = array();
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {

@@ -263,7 +263,9 @@ class Hotels_Controller extends CI_Controller {
 	}
 
 	public function get_all_hotel_details($hotel_code) {
-		$this->data = $this->Hotel_manager->get_all_hotel_available_details($hotel_code);
+		$start_date = date_create_from_format('d/m/Y', $this->session->userdata['start_date'])->format('Y-m-d');
+		$end_date = date_create_from_format('d/m/Y', $this->session->userdata['end_date'])->format('Y-m-d');
+		$this->data = $this->Hotel_manager->get_all_hotel_available_details($hotel_code, $start_date, $end_date);
 
 		$this->load->view('templates/admin/header.php');
 		$this->load->view('pages/select', $this->data);

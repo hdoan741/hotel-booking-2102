@@ -12,6 +12,8 @@
     </div>
     
   </div>
+	
+  <h2>Booking from <?php echo $_GET['start_date'] ?> to <?php echo $_GET['end_date'] ?> </h2>
 
   <div class='row'>
     <h2 class="span4">Hotel Features</h2>
@@ -41,7 +43,7 @@
         <th>Type</th>
         <th>Price</th>
 	<th>Availble No.</th>
-        <th>Amount</th>
+        <th>No. of Rooms</th>
       </tr>
       <?php foreach ($rooms as $room): ?>
       <tr>
@@ -49,7 +51,12 @@
         <td><?php echo ucfirst($room['type']) ?></td>
         <td><?php echo ucfirst($room['price']) ?></td>
 	<td><?php echo ucfirst($room['available_no']) ?></td>
-        <td><input type="text" name="amount[]" ></td>
+        <td>
+		<input type="text" name="amount[]" value="0">
+		<input type="hidden" name="comfort[]" value="<?php echo ucfirst($room['comfort_level']) ?>">
+		<input type="hidden" name="type[]" value="<?php echo ucfirst($room['type']) ?>">
+		<input type="hidden" name="price[]" value="<?php echo ucfirst($room['price']) ?>">
+	</td>
       </tr>
       <?php endforeach; ?>
     </table>
