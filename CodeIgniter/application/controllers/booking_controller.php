@@ -11,6 +11,9 @@ class Booking_Controller extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 		$this->load->model('Booking_manager');
+		$this->load->model('Room_booking_manager');
+		$this->load->model('Hotel_manager');
+		$this->load->model('Room_manager');
 	}
 
 	function create_booking() {
@@ -169,9 +172,46 @@ class Booking_Controller extends CI_Controller {
 		}
 	}
 
+	function mybooking_delete($booking_id) {
+		$booking = $this->Booking_manager->get_booking($booking_id);
+		$booking->delete();
+
+		$this->data['booking'] = $booking;
+		if ($booking != NULL) {
+			$this->load->view('templates/header.php');
+			$this->load->view('booking/mybooking_delete_result', $this->data);
+		}
+	}
+
 	function update_booking($booking_id) {
 		$this->data['booking_id'] = $booking_id;
+		$booking = $this->Booking_manager->get_booking($booking_id);
 		$this->load->view('templates/admin/header.php');
 		$this->load->view('booking/update_booking_result.php', $this->data);
+	}
+
+	function mybooking() {
+		$booking_id = $_POST['booking_id'];
+		$this->data['booking_id'] = $booking_id;
+		$booking = $this->Booking_manager->get_booking($booking_id);
+		if ($booking->id) {
+			$rooms_booking = $this->Room_booking_manager->get_room_booking(NULL, NULL, $booking_id);
+
+			$this->data['booking'] = $booking;
+			$hotel_code = $rooms_booking[0]->hotel_code;
+			$hotel = $this->Hotel_manager->get_hotel($hotel_code);
+			$this->data['hotel'] = $hotel;
+
+			$rooms = array();
+			foreach ($rooms_booking as $row) {
+				$room = $this->Room_manager->get_room($row->room_code, $row->hotel_code);
+				array_push($rooms, $room[0]);
+			}
+			$this->data['rooms'] = $rooms;
+		} else {
+			$this->data['booking'] = NULL;
+		}
+		$this->load->view('templates/header.php');
+		$this->load->view('booking/mybooking.php', $this->data);
 	}
 }	
