@@ -38,6 +38,7 @@ class Booking extends CI_Model {
 		}
 		$this->db->query($sql);
 		$this->id = $this->db->query("SELECT MAX(id) AS id  FROM bookings")->row()->id;
+		return $this->id;
 	}
 
 	function delete() {

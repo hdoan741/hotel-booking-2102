@@ -135,7 +135,7 @@ class Booking_Controller extends CI_Controller {
 			'num_child' => 0,
 			'num_adult' => 0,
 		));
-		$booking->save();
+		$view_data['booking_id'] = $booking->save();
 
 		foreach($this->bookings_info['data'] as $booking_data) {
 			$comfort_level = $booking_data['comfort_level'];
@@ -154,7 +154,7 @@ class Booking_Controller extends CI_Controller {
 		}	
 
 		$this->load->view('templates/header.php');
-		$this->load->view('pages/complete');
+		$this->load->view('pages/complete', $view_data);
 		$this->load->view('templates/footer.php');
 	}
 
