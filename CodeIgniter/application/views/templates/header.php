@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title><?php echo $title ?> - Amazing Hotel</title>
+	<title>Amazing Hotel</title>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css">
   <link rel="stylesheet" type="text/css" href="/css/daterangepicker.css">
